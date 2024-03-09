@@ -1,4 +1,7 @@
-public class players {
+package generalElements;
+
+
+public class Player {
     private String nome;
     public boolean turno; // player 1 = 0, player 2 = 1
     
