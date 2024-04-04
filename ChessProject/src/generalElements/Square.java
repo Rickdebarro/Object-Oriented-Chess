@@ -5,14 +5,23 @@ import generalElements.Commons.Color;
 /*Esta classe, formará o tabuleiro */
 public class Square {
 
-    private Color mColor; //Cor da casa
-    
-    private int verticalCordinate = 0;
-    private char horizontalCordinate;
-
-
-
+    private Color m_Color; //Cor da casa
+    private Piece m_Piece; //Objeto do tipo peça contido no respectivo quadrado
     private boolean isFree = true; //retorna o status de ocupação da casa 
+
+    /*
+     * Retorna a peça localizada no quadrado que chama o método
+     */
+    public Piece getPiece() {
+        return m_Piece;
+    }
+
+     /*
+     * Define a peça localizada no quadrado que chama o método
+     */
+    public void setPiece(Piece m_Piece) {
+        this.m_Piece = m_Piece;
+    }
 
     /*
      * Método que define o status de ocupação da casa
@@ -25,14 +34,14 @@ public class Square {
      * Método que define a cor da casa
      */
     public void setColor(Color mColor) {
-        this.mColor = mColor;
+        this.m_Color = mColor;
     }
 
     /*
      * Método padrão que retorna a cor da casa
      */
     public Color getColor() {
-        return mColor;
+        return m_Color;
     }
 
      /*
