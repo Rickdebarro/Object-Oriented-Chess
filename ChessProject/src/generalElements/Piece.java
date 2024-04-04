@@ -1,5 +1,4 @@
 package generalElements;
-
 import generalElements.Commons.Color;
 
 public class Piece {
@@ -32,7 +31,5 @@ public class Piece {
         /*As classes peças filhas dessa classe, terão este método reescrito para cada peça*/
         return true;
     }
-
-
-
+    
 }
