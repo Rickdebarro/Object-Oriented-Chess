@@ -4,7 +4,12 @@ import generalElements.Commons.Color;
 public class Piece {
 
     private Color mColor; //Cor da peça 
+    private char name_piece; // Nome da peça
 
+    public void Setname_piece(char name_piece){
+        this.name_piece = name_piece;    
+    }
+    
     //Cordenadas da peça
     private int verticalCordinate = 0;
     private int horizontalCordinate = 0;
