@@ -16,24 +16,37 @@ public class Board {
 
     public void print_board() {
 		for(int i = 0;i<8;i++) {
-			System.out.println("| ");
+			System.out.printf("|");
 			for(int j = 0;j<8;j++) {
 
-				System.out.printf("%d",board[i][j].getColor());
-				System.out.println("|");
+                int c = 0; //black
+
+                if(board[i][j].getColor() == Color.WHITE){
+                    c = 1;//white
+                }
+
+				System.out.printf("%d",c);
+				System.out.printf("|");
 			}
-			System.out.println("|\n");
+			System.out.printf("\n");
 		}
 	}
 	
 
      private void initSquare(int x,int y){
+
+        board[x][y] = new Square();
+
+        
         if(flag){
             board[x][y].setColor(Color.WHITE);
             flag = false;
         }else{
             board[x][y].setColor(Color.BLACK);
             flag = true;
+        }
+        if(y == 7){
+            flag = !flag;
         }
     }
 }
