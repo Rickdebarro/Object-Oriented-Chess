@@ -9,18 +9,18 @@ public class Board { // Classe do tabuleriro
 
     
 
-    Square board[][] = new Square[8][8]; // Tabuleiro = matriz de casas
+    Square board[][] = new Square[8][8]; // Tabuleiro = matriz de Square (casa)
     private boolean flag = true; // Atributo que alterna entre 0 e 1 para definir a cor das casas
 
-    public Board(Player p1, Player p2){ // Função de inicialização do tabuleiro
+    public Board(Player p1, Player p2){ // Construtor de Board que inicializa o tabuleiro
         
-        for(int i = 0 ; i<8 ; i++){
+        for(int i = 0 ; i<8 ; i++){ // Loop que define as casas como Black or White
             for(int j = 0 ; j<8 ; j++)
-            initSquare(i,j);
+            initSquare(i,j); 
         }
 
-        p1.InicializaPecas();
-        p2.InicializaPecas();
+        p1.InicializaPecas(); // Inicializa cada peça de p1
+        p2.InicializaPecas(); // Inicializa cada peça de p2
 
         for(int i = 0;i<8;i++){  //Loop que insere os peoes brancos e pretos no tabuleiro
 
@@ -60,13 +60,13 @@ public class Board { // Classe do tabuleriro
         board[7][4] = new Square();
         board[7][4].setPiece(p2.getQueen(0)); // Insere a rainha preta no tabuleiro
 
-        for(int i = 0;i<2;i++){
+        for(int i = 0;i<2;i++){ // Loop que define inicialmente as linhas 0 e 1 como ocupadas
             for(int j = 0;j<8;j++){
                 board[i][j].setFree(false);
             }
         }
 
-        for(int i = 6;i<8;i++){
+        for(int i = 6;i<8;i++){ // Loop que define inicialmente as linhas 6 e 7 como ocupadas
             for(int j = 0;j<8;j++){
                 board[i][j].setFree(false);
             }
@@ -80,7 +80,7 @@ public class Board { // Classe do tabuleriro
                 if(board[i][j].getIsFree() == true){
                     System.out.printf(" ");
                 }else{
-                    System.out.print(board[i][j].getName_piece());
+                    System.out.print(board[i][j].getName_piece()); // Printa o nome da peça
                 }
 
 				System.out.print("|");
@@ -90,7 +90,7 @@ public class Board { // Classe do tabuleriro
 	}
 	
 
-     private void initSquare(int x,int y){ // Defini as casas como White or Black
+     private void initSquare(int x,int y){ // Define as casas como White or Black
 
 
         board[x][y] = new Square();
