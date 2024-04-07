@@ -23,54 +23,87 @@ public class Board { // Classe do tabuleriro
         p2.InicializaPecas();
 
         for(int i = 0;i<8;i++){  //Loop que insere os peoes brancos e pretos no tabuleiro
+
+            board[1][i] = new Square();
+            board[6][i] = new Square();
             board[1][i].setPiece(p1.getPeao(i));
             board[6][i].setPiece(p2.getPeao(i));
         }
 
         for(int i = 0, j = 0;i<8 && j<2;i = i+7,j++){ //Loop que insere as torres brancas e pretas no tabuleiro
-            board[0][i].setPiece(p1.getCastle(i));
-
-            board[7][i].setPiece(p2.getCastle(i));
+            board[0][i] = new Square();
+            board[0][i].setPiece(p1.getCastle(j));
+            board[7][i] = new Square();
+            board[7][i].setPiece(p2.getCastle(j));
         }
 
         for(int i = 1, j = 0;i<7 && j < 2;i = i+5,j++){ //Loop que insere os cavalos brancos e pretos no tabuleiro
+            board[0][i] = new Square();
             board[0][i].setPiece(p1.getHorse(j));
-
+            board[7][i] = new Square();
             board[7][i].setPiece(p2.getHorse(j));
         }
 
         for(int i = 2, j = 0;i<6 && j < 2; i = i+3,j++){ //Loop que insere os bispos brancos e pretos no tabuleiro
+            board[0][i] = new Square();
             board[0][i].setPiece(p1.getBishop(j));
-
+            board[7][i] = new Square();
             board[7][i].setPiece(p2.getBishop(j));
         }
-
+        board[0][3] = new Square();
         board[0][3].setPiece(p1.getKing(0)); // Insere o rei branco no tabuleiro
+        board[7][3] = new Square();
         board[7][3].setPiece(p2.getKing(0)); // Insere o rei preto no tabuleiro
         
+        board[0][4] = new Square();
         board[0][4].setPiece(p1.getQueen(0)); // Insere a rainha branca no tabuleiro
+        board[7][4] = new Square();
         board[7][4].setPiece(p2.getQueen(0)); // Insere a rainha preta no tabuleiro
+
+        for(int i = 0;i<2;i++){
+            for(int j = 0;j<8;j++){
+                board[i][j].setFree(false);
+            }
+        }
+
+        for(int i = 6;i<8;i++){
+            for(int j = 0;j<8;j++){
+                board[i][j].setFree(false);
+            }
+        }
     }
 
     public void print_board() { // Função de print do tabuleiro
 		for(int i = 0;i<8;i++) {
-			System.out.println("| ");
+			System.out.printf("|");
 			for(int j = 0;j<8;j++) {
-				 System.out.println(board[i][j].getName_piece());
-				System.out.println("|");
+                if(board[i][j].getIsFree() == true){
+                    System.out.printf(" ");
+                }else{
+                    System.out.print(board[i][j].getName_piece());
+                }
+
+				System.out.print("|");
 			}
-			System.out.println("|\n");
+			System.out.printf("\n");
 		}
 	}
 	
 
      private void initSquare(int x,int y){ // Defini as casas como White or Black
+
+
+        board[x][y] = new Square();
+
         if(flag){
             board[x][y].setColor(Color.WHITE);
             flag = false;
         }else{
             board[x][y].setColor(Color.BLACK);
             flag = true;
+        }
+        if(y == 7){
+            flag = !flag;
         }
     }
 }
