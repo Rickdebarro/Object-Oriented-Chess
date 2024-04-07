@@ -13,10 +13,14 @@ public class Board { // Classe do tabuleriro
     private boolean flag = true; // Atributo que alterna entre 0 e 1 para definir a cor das casas
 
     public Board(Player p1, Player p2){ // Função de inicialização do tabuleiro
+        
         for(int i = 0 ; i<8 ; i++){
             for(int j = 0 ; j<8 ; j++)
             initSquare(i,j);
         }
+
+        p1.InicializaPecas();
+        p2.InicializaPecas();
 
         for(int i = 0;i<8;i++){  //Loop que insere os peoes brancos e pretos no tabuleiro
             board[1][i].setPiece(p1.getPeao(i));
@@ -52,8 +56,7 @@ public class Board { // Classe do tabuleriro
 		for(int i = 0;i<8;i++) {
 			System.out.println("| ");
 			for(int j = 0;j<8;j++) {
-
-				// System.out.println(board[i][j].getPiece);
+				 System.out.println(board[i][j].getName_piece());
 				System.out.println("|");
 			}
 			System.out.println("|\n");
@@ -71,3 +74,4 @@ public class Board { // Classe do tabuleriro
         }
     }
 }
+

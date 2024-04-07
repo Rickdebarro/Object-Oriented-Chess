@@ -6,6 +6,7 @@ import Board.Board;
 
 public class main {
     public static void main(String[] args){
+        
         Scanner sc = new Scanner(System.in);
         Player p1,p2;
         Board tab;
@@ -21,7 +22,7 @@ public class main {
         p2 = new Player(nome_player2, Color.BLACK);
 
         tab = new Board(p1,p2);
-
+        tab.print_board();
         
     }
 }

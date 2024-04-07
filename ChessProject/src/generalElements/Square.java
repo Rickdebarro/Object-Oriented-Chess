@@ -18,6 +18,9 @@ public class Square { // Classe das Casas do tabuleiro
         return m_Piece;
     }
 
+    public char getName_piece(){
+        return m_Piece.name_piece;
+    }
 
      /*
      * Define a peça localizada no quadrado que chama o método
