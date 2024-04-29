@@ -1,2 +1,12 @@
-# Object-Oriented-Chess
-Jogo de xadrez, proposto na disciplina de POO (Programação Orientada a Objetos)
+# Chess_Java
+
+Chess made in Java using the structural concepts of object-oriented programming (abstraction, encapsulation, inheritance and polymorphism)
+
+Creators:
+- Lucas Mota
+- Henrique Barros
+
+Professor: 
+- Marcio Soussa
+
+

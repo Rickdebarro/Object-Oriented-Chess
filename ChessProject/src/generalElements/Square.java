@@ -3,17 +3,23 @@ package generalElements;
 import generalElements.Commons.Color;
 
 /*Esta classe, formará o tabuleiro */
-public class Square {
+public class Square { // Classe das Casas do tabuleiro
 
-    private Color m_Color; //Cor da casa
+    private Color c_Color; //Cor da casa
     private Piece m_Piece; //Objeto do tipo peça contido no respectivo quadrado
     private boolean isFree = true; //retorna o status de ocupação da casa 
 
     /*
      * Retorna a peça localizada no quadrado que chama o método
      */
+
+     
     public Piece getPiece() {
         return m_Piece;
+    }
+
+    public char getName_piece(){
+        return m_Piece.name_piece;
     }
 
      /*
@@ -33,21 +39,21 @@ public class Square {
     /*
      * Método que define a cor da casa
      */
-    public void setColor(Color mColor) {
-        this.m_Color = mColor;
+    public void setColor(Color c_Color) {
+        this.c_Color = c_Color;
     }
 
     /*
      * Método padrão que retorna a cor da casa
      */
     public Color getColor() {
-        return m_Color;
+        return c_Color;
     }
 
      /*
      * Método padrão que retorna o status da casa
      */
-    public boolean isFree(){
+    public boolean getIsFree(){
         return isFree;
     }
 }
