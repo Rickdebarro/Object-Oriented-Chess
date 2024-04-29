@@ -3,7 +3,7 @@ import java.util.Scanner;
 import generalElements.*;
 import generalElements.Commons.Color;
 import Board.Board;
-
+import GUI_Chess.*;
 public class main {
     public static void main(String[] args){
         
@@ -21,7 +21,7 @@ public class main {
         String nome_player2 = sc.nextLine();
         p2 = new Player(nome_player2, Color.BLACK); // Construtor de Player
 
-        System.out.println("Bom Jogo " + p1.getName() + " e " + p2.getName() + " ! Que vença o melhor!");
+        System.out.println("Bom Jogo " + p1.getName() + " e " + p2.getName() + " , Que vença o melhor!");
         tab = new Board(p1,p2); // Construtor da classe Board recebe 2 players (p1,p2) e inicaliza o tabuleiro
         tab.print_board(); // Função que printa o tabuleiro 
 
