@@ -84,6 +84,7 @@ public class Board { // Classe do tabuleriro
                 }
 
 				System.out.print("|");
+
 			}
 			System.out.printf("\n");
 		}

@@ -4,12 +4,14 @@ import generalElements.*;
 import generalElements.Commons.Color;
 import Board.Board;
 import GUI_Chess.*;
+
 public class main {
     public static void main(String[] args){
         
         Scanner sc = new Scanner(System.in);
         Player p1,p2; // Objetos p1 e p2 da classe Player
         Board tab; // Objeto tab da classe Board
+
 
         System.out.println("Bem vindos ao Clube de Xadrez!");
         System.out.println("------------------------------");
@@ -19,6 +21,7 @@ public class main {
         p1 = new Player(nome_player1, Color.WHITE); // Construtor de Player
         System.out.println("insira o nome do Player 2: ");
         String nome_player2 = sc.nextLine();
+
         p2 = new Player(nome_player2, Color.BLACK); // Construtor de Player
 
         System.out.println("Bom Jogo " + p1.getName() + " e " + p2.getName() + " , Que vença o melhor!");
@@ -27,7 +30,6 @@ public class main {
 
         p1.PrintPlayer(); // Menu do objeto p1
         p2.PrintPlayer(); // Menu do objeto p2
-
 
 
     }
