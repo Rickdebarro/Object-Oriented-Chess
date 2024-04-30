@@ -1,19 +1,24 @@
 package generalElements;
 
+import javax.swing.JPanel;
+
 import generalElements.Commons.Color;
 
 /*Esta classe, formará o tabuleiro */
-public class Square { // Classe das Casas do tabuleiro
+public class Square extends JPanel{ // Classe das Casas do tabuleiro
 
+    //Atributes
     private Color c_Color; //Cor da casa
     private Piece m_Piece; //Objeto do tipo peça contido no respectivo quadrado
     private boolean isFree = true; //retorna o status de ocupação da casa 
 
+     public Square(){
+        super();
+    }
+
     /*
      * Retorna a peça localizada no quadrado que chama o método
      */
-
-     
     public Piece getPiece() {
         return m_Piece;
     }
