@@ -5,7 +5,7 @@ public class Player {
 
     private String name; // nome do player
 
-    public boolean turn; // player 1 = true, player 2 = false, turno do jogo alterna entre true e false
+    public static boolean turn; // player 1 = true, player 2 = false, turno do jogo alterna entre true e false
 
     private Commons.Color p_color; // m_color define a cor das peças do player como Black ou White
 

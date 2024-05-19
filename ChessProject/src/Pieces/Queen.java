@@ -7,4 +7,10 @@ public class Queen extends Piece { // classe dos rainha, herda os atributos e me
         super();
         this.name_piece = name_piece;
     }
+    
+    @Override
+    public boolean move(int x, int y){
+        /*As classes peças filhas dessa classe, terão este método reescrito para cada peça*/
+        return true;
+    }
 }

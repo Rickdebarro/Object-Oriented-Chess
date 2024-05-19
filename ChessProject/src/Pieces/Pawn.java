@@ -8,4 +8,12 @@ public class Pawn extends Piece { // classe dos peoes, herda os atributos e meto
         this.name_piece = name_piece;
     }
     
+    @Override
+    public boolean move(int x, int y){
+        
+        return true;
+    } 
+    
+    
+    
 }

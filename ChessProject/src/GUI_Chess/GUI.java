@@ -3,6 +3,8 @@ package GUI_Chess;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -11,7 +13,7 @@ import javafx.scene.layout.GridPane;
 public class GUI {
 
     // Atributes
-    private JFrame telinha;
+    private JFrame telinha,telajogo,telainstrucao;
 
     private JPanel titulo, panel_start, panel_instructions;
     
@@ -23,6 +25,7 @@ public class GUI {
 
     private void initTela() {
         telinha = new JFrame();
+        telinha.add(new JLabel(new ImageIcon("Images\soussa.png")));
         telinha.setVisible(true);
         telinha.setSize(700, 700);
         telinha.setLayout(null);
@@ -48,22 +51,35 @@ public class GUI {
     }
 
     private void initButtons(){
-        JButton start = new JButton();
-        JButton instruction = new JButton();
-
-        start.setSize(5000,5000);
-        instruction.setSize(50000,5000);
-
-
+        JButton start = new JButton("Start");
+        start.setBounds(25,25,150,50);
+        start.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	telajogo = new JFrame();
+            	telajogo.setVisible(true);
+            	telajogo.setSize(700, 700);
+            	telajogo.setLayout(null);
+                telajogo.setResizable(true);
+                telajogo.setLocationRelativeTo(null);
+                telajogo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                telinha.dispose();
+            }
+        });
+        JButton instruction = new JButton("Instructions");
+        instruction.setBounds(25,25,150,50);
         panel_instructions = new JPanel();
-        panel_instructions.setLayout(new GridPane());
-        panel_start = new JPanel();
-        
-        panel_start.add(start);
-        panel_instructions.setBounds(175, 175, 200, 200);
+        panel_instructions.setBounds(250, 200, 200, 100);
+        panel_instructions.setLayout(null);
+        panel_instructions.setBackground(Color.red);
         panel_instructions.add(instruction);
-        panel_instructions.setBackground(Color.black);
-
+        
+        panel_start = new JPanel();
+        panel_start.setLayout(null);
+        panel_start.setBounds(250, 350, 200, 100);
+        panel_start.setBackground(Color.blue);
+        panel_start.add(start);
+       
         telinha.add(panel_start);
         telinha.add(panel_instructions);
 

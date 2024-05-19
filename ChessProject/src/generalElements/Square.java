@@ -1,30 +1,28 @@
 package generalElements;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import generalElements.Commons.Color;
 
 /*Esta classe, formará o tabuleiro */
-public class Square extends JPanel{ // Classe das Casas do tabuleiro
+public class Square{ // Classe das Casas do tabuleiro
 
     //Atributes
     private Color c_Color; //Cor da casa
     private Piece m_Piece; //Objeto do tipo peça contido no respectivo quadrado
     private boolean isFree = true; //retorna o status de ocupação da casa 
-
+    private ImageIcon cor_da_casa;
+    
      public Square(){
         super();
     }
-
+     
     /*
      * Retorna a peça localizada no quadrado que chama o método
      */
     public Piece getPiece() {
         return m_Piece;
-    }
-
-    public char getName_piece(){
-        return m_Piece.name_piece;
     }
 
      /*
@@ -58,7 +56,9 @@ public class Square extends JPanel{ // Classe das Casas do tabuleiro
      /*
      * Método padrão que retorna o status da casa
      */
-    public boolean getIsFree(){
+    public boolean getIsFree(int x, int y){
         return isFree;
     }
+    
+
 }
