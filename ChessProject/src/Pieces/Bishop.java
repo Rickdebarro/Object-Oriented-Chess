@@ -1,4 +1,5 @@
 package Pieces;
+import Board.Board;
 import generalElements.*;
 
 public class Bishop extends Piece {
@@ -10,8 +11,8 @@ public class Bishop extends Piece {
     }
     
     @Override
-    public boolean move(int x, int y){
-        /*As classes peças filhas dessa classe, terão este método reescrito para cada peça*/
+    public boolean move(Board tab,int x, int y){
+    	System.out.println("\u001B[31m" + "Você selecionou um BISPO!" + "\u001B[0m");
         return true;
     }
     

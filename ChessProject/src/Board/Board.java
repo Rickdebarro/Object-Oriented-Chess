@@ -13,6 +13,7 @@ public class Board { // Classe do tabuleriro
     public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
     public static final String BLACK = "\u001B[30m";
+    
     public void CheckFree(int x, int y){
     	if(board[x][y].getPiece() != null){
     		board[x][y].setFree(false);

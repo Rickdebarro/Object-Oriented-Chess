@@ -1,6 +1,7 @@
 package generalElements;
 import javax.swing.*;
 
+import Board.Board;
 import generalElements.Commons.Color;
 
 public class Piece {
@@ -10,6 +11,10 @@ public class Piece {
     protected JLabel png_peca; // icon da peça (Realizar)
     protected static final String ANSI_YELLOW = "\u001B[33m"; 
     protected static final String ANSI_RESET = "\u001B[0m";
+    protected static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
+    protected static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+    protected static final String BLACK = "\u001B[30m";
+    protected static final String RED = "\u001B[31m"; 
     
     public void Setname_piece(char name_piece){
         this.name_piece = name_piece;    
@@ -41,13 +46,17 @@ public class Piece {
     /*
      * Método para realizar o movimento de uma peça, retorna se é possível mover para a cordenada designada*
      */
-    public boolean move(int x, int y){
-        /*As classes peças filhas dessa classe, terão este método reescrito para cada peça*/
+    public boolean move(Board tab,int x, int y){
+        
         return true;
     }
 
     public char getName_piece(){
         return name_piece;
+    }
+    
+    public boolean Possible_pos(int x, int y){
+    	return true;
     }
     
 }

@@ -32,9 +32,10 @@ public class Play {
 			 
 		}while(!ChecaCoordenada(t1, t2, jogador, p_color));
 		
+		tab.board[t1][t2].getPiece().move(tab,t1, t2);
 		 
-		 
-		 
+		
+		
 		
 		if(turno == true) {
 			turno = false;

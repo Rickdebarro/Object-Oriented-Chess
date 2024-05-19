@@ -1,4 +1,5 @@
 package Pieces;
+import Board.Board;
 import generalElements.*;
 
 public class Castle extends Piece { // classe dos torres, herda os atributos e metodos da classe geral peça
@@ -9,8 +10,8 @@ public class Castle extends Piece { // classe dos torres, herda os atributos e m
     }
     
     @Override
-    public boolean move(int x, int y){
-        /*As classes peças filhas dessa classe, terão este método reescrito para cada peça*/
+    public boolean move(Board tab,int x, int y){
+    	System.out.println("\u001B[31m" + "Você selecionou um CASTELO!" + "\u001B[0m");
         return true;
     }
 }
