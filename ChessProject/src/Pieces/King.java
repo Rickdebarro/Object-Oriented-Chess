@@ -10,9 +10,9 @@ public class King extends Piece { // classe do rei, herda os atributos e metodos
     }
     
     @Override
-    public boolean move(Board tab,int x, int y){
+    public void SetPossible_Pos(Board tab,int x, int y){
     	System.out.println("\u001B[31m" + "Você selecionou um REI!" + "\u001B[0m");
-        return true;
+        
     }
     
 }

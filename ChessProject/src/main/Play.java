@@ -11,6 +11,7 @@ import Pieces.*;
 public class Play {
 	
 	private static boolean turno = true;
+	private static int rodada = 0;
 	private static Player p1,p2;
 	private static Board tab;
 	
@@ -19,9 +20,15 @@ public class Play {
 		Scanner sc = new Scanner(System.in);
 		
 		int t1,t2;
+		int m1,m2;
 		
-		do {
+		tab.Verificacao();
+		
+		if(rodada != 0) {
 			tab.print_board();
+		}
+		do {
+			//tab.print_board();
 			System.out.println("\u001B[33m" +jogador.getName() + "\u001B[0m" + ", Digite a Linha da Peça que Deseja Selecionar");
 			
 			 t1 = sc.nextInt();	
@@ -32,11 +39,23 @@ public class Play {
 			 
 		}while(!ChecaCoordenada(t1, t2, jogador, p_color));
 		
-		tab.board[t1][t2].getPiece().move(tab,t1, t2);
+		tab.board[t1][t2].getPiece().SetPossible_Pos(tab,t1, t2);
 		 
+		do {
+			//tab.print_board();
+			System.out.println(" Digite a Linha da Posição que Deseja Jogar");
+			
+			 m1 = sc.nextInt();	
+
+			System.out.println(" Digite a Coluna da Posição que Deseja Jogar");
+			
+			 m2 = sc.nextInt();
+			 
+		}while(!tab.move_Board_Possibility(m1, m2, tab.board[t1][t2].getPiece().getmovi_possibilityX(), tab.board[t1][t2].getPiece().getmovi_possibilityY()));
 		
+		tab.board[t1][t2].getPiece().move(tab,t1,t2, m1, m2);
 		
-		
+		rodada++;
 		if(turno == true) {
 			turno = false;
 			Jogar(p2, Commons.Color.BLACK);
@@ -50,7 +69,7 @@ public class Play {
 	
 	public static boolean ChecaCoordenada(int t1,int t2, Player jogador, Commons.Color p_color){
 		
-		if(tab.board[t1][t2].getIsFree(t1,t2) == true || tab.board[t1][t2].getPiece().getColor() != p_color) {
+		if(tab.board[t1][t2].getIsFree() == true || tab.board[t1][t2].getPiece().getColor() != p_color) {
 			
 			System.out.println("Coodenada Invalida!");
 			

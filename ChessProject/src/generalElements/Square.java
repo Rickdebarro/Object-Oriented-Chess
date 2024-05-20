@@ -56,9 +56,9 @@ public class Square{ // Classe das Casas do tabuleiro
      /*
      * Método padrão que retorna o status da casa
      */
-    public boolean getIsFree(int x, int y){
+    public boolean getIsFree(){
         return isFree;
     }
     
-
+    
 }

@@ -10,8 +10,8 @@ public class Queen extends Piece { // classe dos rainha, herda os atributos e me
     }
     
     @Override
-    public boolean move(Board tab,int x, int y){
+    public void SetPossible_Pos(Board tab,int x, int y){
     	System.out.println("\u001B[31m" + "Você selecionou um RAINHA!" + "\u001B[0m");
-        return true;
+        
     }
 }
