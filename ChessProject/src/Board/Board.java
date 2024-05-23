@@ -133,12 +133,12 @@ public class Board { // Classe do tabuleriro
 			for(int j = 0;j<8;j++) {
 				if(move_Board_Possibility(i, j, movi_possibilityX, movi_possibilityY)) {
 					if(board[i][j].getIsFree()) {
-						System.out.printf(YELLOW_BACKGROUND + " " + ANSI_RESET);
+						System.out.print(YELLOW_BACKGROUND + " " + ANSI_RESET);
 					}else {
-						System.out.println(YELLOW_BACKGROUND + board[i][j].getPiece().getName_piece() + ANSI_RESET);
+						System.out.print(YELLOW_BACKGROUND + board[i][j].getPiece().getName_piece() + ANSI_RESET);
 					}
 				}else {
-					if(board[i][j].getIsFree() == true){
+					if(board[i][j].getIsFree()){
 	                    System.out.printf(" ");
 	                }else{
 	                	if(board[i][j].getPiece().getColor() == Color.BLACK) {

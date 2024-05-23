@@ -23,7 +23,7 @@ public class Pawn extends Piece { // classe dos peoes, herda os atributos e meto
     	 movi_possibilityX = new ArrayList();
     	 movi_possibilityY = new ArrayList();
     	
-    	System.out.println(RED + "Você selecionou um PEAO!" + ANSI_RESET);
+    	 System.out.println("Você selecionou um " + RED + "PEAO!" + ANSI_RESET);
     	System.out.println(RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
     	
     	if(tab.board[x][y].getPiece().getColor() == Commons.Color.WHITE){
@@ -75,21 +75,21 @@ public class Pawn extends Piece { // classe dos peoes, herda os atributos e meto
     				}
     		}
     		if(y == 0) {
-    			if(tab.board[x-1][y+1].getPiece() != null && tab.board[x-1][y+1].getPiece().getColor() == Commons.Color.BLACK) {
+    			if(tab.board[x-1][y+1].getPiece() != null && tab.board[x-1][y+1].getPiece().getColor() == Commons.Color.WHITE) {
     				movi_possibilityX.add(x-1);
 	    			movi_possibilityY.add(y+1);
         		}
     		}else if(y == 7) {
-    			if(tab.board[x-1][y-1].getPiece() != null && tab.board[x-1][y-1].getPiece().getColor() == Commons.Color.BLACK) {
+    			if(tab.board[x-1][y-1].getPiece() != null && tab.board[x-1][y-1].getPiece().getColor() == Commons.Color.WHITE) {
     				movi_possibilityX.add(x-1);
 	    			movi_possibilityY.add(y-1);
         		}
     		}else {
-    			if(tab.board[x-1][y+1].getPiece() != null && tab.board[x-1][y+1].getPiece().getColor() == Commons.Color.BLACK) {
+    			if(tab.board[x-1][y+1].getPiece() != null && tab.board[x-1][y+1].getPiece().getColor() == Commons.Color.WHITE) {
     				movi_possibilityX.add(x-1);
 	    			movi_possibilityY.add(y+1);
         		}
-    			if(tab.board[x-1][y-1].getPiece() != null && tab.board[x-1][y-1].getPiece().getColor() == Commons.Color.BLACK) {
+    			if(tab.board[x-1][y-1].getPiece() != null && tab.board[x-1][y-1].getPiece().getColor() == Commons.Color.WHITE) {
     				movi_possibilityX.add(x-1);
 	    			movi_possibilityY.add(y-1);
         		}

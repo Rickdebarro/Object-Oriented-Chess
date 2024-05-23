@@ -40,7 +40,20 @@ public class Play {
 		}while(!ChecaCoordenada(t1, t2, jogador, p_color));
 		
 		tab.board[t1][t2].getPiece().SetPossible_Pos(tab,t1, t2);
-		 
+		
+		while(tab.board[t1][t2].getPiece().getmovi_possibilityX().size() == 0) {
+			System.out.println("Essa Peça não tem Jogadas Possiveis!");
+			
+			System.out.println("\u001B[33m" +jogador.getName() + "\u001B[0m" + ", Digite a Linha da Peça que Deseja Selecionar");
+			
+			 t1 = sc.nextInt();	
+
+			System.out.println(jogador.getName() + ", Digite a Coluna da Peça que Deseja Selecionar");
+			
+			 t2 = sc.nextInt();
+			 
+			 tab.board[t1][t2].getPiece().SetPossible_Pos(tab,t1, t2);
+		}
 		do {
 			//tab.print_board();
 			System.out.println(" Digite a Linha da Posição que Deseja Jogar");
