@@ -101,12 +101,7 @@ public class Pawn extends Piece { // classe dos peoes, herda os atributos e meto
     	
     }
     
-    @Override
-    public void move(Board tab,int t1, int t2, int x, int y) {
-    	
-    	tab.board[x][y].setPiece(tab.board[t1][t2].getPiece());
-    	tab.board[t1][t2].setPiece(null);
-    }
+   
     
     
     

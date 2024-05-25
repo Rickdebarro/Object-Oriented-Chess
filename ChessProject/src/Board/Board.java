@@ -19,6 +19,7 @@ public class Board { // Classe do tabuleriro
     public static final String YELLOW_BACKGROUND = "\u001B[43m";
     
     public void CheckFree(int x, int y){
+        if(x>7 || x<0 || y>7 || y<0) board[x][y].setFree(false);
     	if(board[x][y].getPiece() != null){
     		board[x][y].setFree(false);
     	}else {
@@ -96,7 +97,11 @@ public class Board { // Classe do tabuleriro
     }
 
     public void print_board() { // Função de print do tabuleiro
+        int x = -1;
+        int y = -1;
+        System.out.println("  0 1 2 3 4 5 6 7");
 		for(int i = 0;i<8;i++) {
+             System.out.print(++x);
 			System.out.printf("|");
 			for(int j = 0;j<8;j++) {
                 if(board[i][j].getIsFree() == true){
@@ -108,7 +113,6 @@ public class Board { // Classe do tabuleriro
                 		System.out.print(BLACK + ANSI_WHITE_BACKGROUND + board[i][j].getPiece().getName_piece() + ANSI_RESET); // Printa o nome da peça
                 	}
                 }
-
 				System.out.print("|");
 
 			}
@@ -127,8 +131,11 @@ public class Board { // Classe do tabuleriro
     }
     
     public void Print_Board_Possibility(ArrayList movi_possibilityX, ArrayList movi_possibilityY) {
-    	
+    	int x = -1;
+        int y = -1;
+        System.out.println("  0 1 2 3 4 5 6 7");
     	for(int i = 0;i<8;i++) {
+            System.out.print(++x);
 			System.out.printf("|");
 			for(int j = 0;j<8;j++) {
 				if(move_Board_Possibility(i, j, movi_possibilityX, movi_possibilityY)) {
