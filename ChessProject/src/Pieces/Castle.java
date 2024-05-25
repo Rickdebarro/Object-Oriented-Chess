@@ -30,6 +30,8 @@ public void SetPossible_Pos(Board tab,int x, int y){
                 movi_possibilityX.add(x);
                 movi_possibilityY.add(esq-1);
                 break;
+            }else{
+                break;
             }
         }
         esq--;
@@ -43,6 +45,8 @@ public void SetPossible_Pos(Board tab,int x, int y){
             if(tab.board[x][dir+1].getPiece().getColor() != tab.board[x][y].getPiece().getColor()){
                 movi_possibilityX.add(x);
                 movi_possibilityY.add(dir+1);
+                break;
+            }else{
                 break;
             }
         }

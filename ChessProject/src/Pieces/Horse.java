@@ -185,10 +185,6 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     		}
     	}
     		
-    	if(movi_possibilityX.size() == 0){
-    		
-    	}
-    		
     	tab.Print_Board_Possibility(movi_possibilityX, movi_possibilityY);
     }
     
