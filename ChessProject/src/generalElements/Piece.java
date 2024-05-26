@@ -18,25 +18,17 @@ public class Piece {
     protected static final String ANSI_RESET = "\u001B[0m";
     protected static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
     protected static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-    protected static final String BLACK = "\u001B[30m";
-    protected static final String RED = "\u001B[31m"; 
-    
-    //Cordenadas da peça
-    private int verticalCordinate = 0;
-    private int horizontalCordinate = 0;
-    
+    protected static final String ANSI_BLACK = "\u001B[30m";
+    protected static final String ANSI_RED = "\u001B[31m"; 
+       
     public void Setname_piece(char name_piece){
         this.name_piece = name_piece;    
     }
-    
-    /*
-     * Método que define a cordenada onde uma determinada peça está localizada
-     */
-    public void setCordinates(int horizontalCordinate, int verticalCordinate) {
-        this.verticalCordinate = verticalCordinate;
-        this.horizontalCordinate = horizontalCordinate;
-    }
 
+    public char getName_piece(){
+        return name_piece;
+    }
+    
     /*
      * Método padrão que retorna a cor da peça que o chama
      */
@@ -51,18 +43,11 @@ public class Piece {
     /*
      * Método para realizar o movimento de uma peça, retorna se é possível mover para a cordenada designada*
      */
-    public void SetPossible_Pos(Board tab,int x, int y){
-        
-    }
+    public void SetPossible_Pos(Board tab,int x, int y){}
     
     public void move(Board tab,int t1, int t2, int x, int y) {
     	tab.board[x][y].setPiece(tab.board[t1][t2].getPiece());
     	tab.board[t1][t2].setPiece(null);
-    }
-    
-
-    public char getName_piece(){
-        return name_piece;
     }
     
     

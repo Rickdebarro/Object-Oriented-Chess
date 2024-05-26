@@ -14,14 +14,14 @@ public class King extends Piece { // classe do rei, herda os atributos e metodos
     
     @Override
     public void SetPossible_Pos(Board tab,int x, int y){
-    	System.out.println("\u001B[31m" + "Você selecionou um REI!" + "\u001B[0m");
+    	System.out.println("Você selecionou um " + ANSI_RED + "REI!" + ANSI_RESET);
         Scanner sc = new Scanner(System.in);
     	
     	 movi_possibilityX = new ArrayList();
     	 movi_possibilityY = new ArrayList();
     	
     	
-    	System.out.println(RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
+    	System.out.println(ANSI_RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
 
             if(x == 7 && y == 7){
     		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}

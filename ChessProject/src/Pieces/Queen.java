@@ -6,6 +6,13 @@ import generalElements.*;
 
 public class Queen extends Piece { // classe dos rainha, herda os atributos e metodos da classe geral peça
     
+    private int auxX;
+    private int auxY;
+    private int dir;
+    private int esq;
+    private int cima;
+    private int baixo;
+
     public Queen(char name_piece){
         super();
         this.name_piece = name_piece;
@@ -17,10 +24,10 @@ public class Queen extends Piece { // classe dos rainha, herda os atributos e me
         movi_possibilityX = new ArrayList();
  	    movi_possibilityY = new ArrayList();
 
-    	System.out.println("\u001B[31m" + "Você selecionou um RAINHA!" + "\u001B[0m");
-        System.out.println(RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
+    	System.out.println("Você selecionou um " + ANSI_RED+ "RAINHA!" + ANSI_RESET);
+        System.out.println(ANSI_RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
         
-        int auxX = x, auxY = y;
+        auxX = x; auxY = y;
 
         while(auxX+1 <= 7 && auxY+1 <= 7){
             if(tab.board[auxX+1][auxY+1].getIsFree()){
@@ -100,7 +107,7 @@ public class Queen extends Piece { // classe dos rainha, herda os atributos e me
             auxY--;
         }
 
-        int dir = y,esq = y,cima = x,baixo = x;
+        dir = y;esq = y;cima = x;baixo = x;
 
     while(esq-1 >= 0){
         if(tab.board[x][esq-1].getIsFree()){

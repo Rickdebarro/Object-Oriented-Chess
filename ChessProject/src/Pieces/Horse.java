@@ -18,8 +18,8 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     	movi_possibilityX = new ArrayList();
    	 	movi_possibilityY = new ArrayList();
    	 	
-    	System.out.println("Você selecionou um " + RED + "CAVALO!" + ANSI_RESET);
-    	System.out.println(RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
+    	System.out.println("Você selecionou um " + ANSI_RED + "CAVALO!" + ANSI_RESET);
+    	System.out.println(ANSI_RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
     	  	
     	if(tab.board[x][y].getPiece().getColor() == Commons.Color.WHITE){
     		if(x-2 >= 0) {

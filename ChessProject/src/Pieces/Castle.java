@@ -6,6 +6,11 @@ import generalElements.*;
 
 public class Castle extends Piece { // classe dos torres, herda os atributos e metodos da classe geral peça
 
+private int dir;
+private int esq;
+private int cima;
+private int baixo;
+
 public Castle(char name_piece){
     super();
     this.name_piece = name_piece;
@@ -16,10 +21,10 @@ public void SetPossible_Pos(Board tab,int x, int y){
 	movi_possibilityX = new ArrayList();
  	movi_possibilityY = new ArrayList();
  	
-	System.out.println("Você selecionou uma " + RED + "TORRE!" + ANSI_RESET);
-	System.out.println(RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
+	System.out.println("Você selecionou uma " + ANSI_RED + "TORRE!" + ANSI_RESET);
+	System.out.println(ANSI_RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
 	
-    int dir = y,esq = y,cima = x,baixo = x;
+    dir = y;esq = y;cima = x;baixo = x;
 
     while(esq-1 >= 0){
         if(tab.board[x][esq-1].getIsFree()){
