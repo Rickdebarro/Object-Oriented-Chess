@@ -10,12 +10,16 @@ import Board.Board;
 
 public class Pawn extends Piece { // classe dos peoes, herda os atributos e metodos da classe geral peça
     
+	/*
+	 * Construtor de Pawn
+	 */
     public Pawn(char name_piece){
         super();
         this.name_piece = name_piece;
     }
     
     @Override
+	//Função que verifica as possibilidades de movimento para Pawn
     public void SetPossible_Pos(Board tab,int x, int y){
     	
     	Scanner sc = new Scanner(System.in);

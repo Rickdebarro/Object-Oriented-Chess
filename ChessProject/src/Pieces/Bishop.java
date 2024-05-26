@@ -7,15 +7,20 @@ import generalElements.*;
 public class Bishop extends Piece {
     // classe dos bispos, herda os atributos e metodos da classe geral peça
 	
+    //Variável auxiliar
     private int auxX;
     private int auxY;
     
+    /*
+     * Construtor de Bishop
+     */
     public Bishop(char name_piece){
         super();
         this.name_piece = name_piece;
     }
     
     @Override
+    //Função que verifica as possibilidades de movimento para Bishop
     public void SetPossible_Pos(Board tab,int x, int y){
 
         movi_possibilityX = new ArrayList();
@@ -107,5 +112,4 @@ public class Bishop extends Piece {
         tab.Print_Board_Possibility(movi_possibilityX, movi_possibilityY);
     }
     
-    // Ainda vamos fazer as peças
 }

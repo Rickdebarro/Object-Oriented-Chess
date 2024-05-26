@@ -6,17 +6,22 @@ import generalElements.*;
 
 public class Castle extends Piece { // classe dos torres, herda os atributos e metodos da classe geral peça
 
+//Variável de controle da mocimentação
 private int dir;
 private int esq;
 private int cima;
 private int baixo;
 
+/*
+ * Construtor de Castle
+ */
 public Castle(char name_piece){
     super();
     this.name_piece = name_piece;
 }
 
 @Override
+//Função que verifica as possibilidades de movimento para Castle
 public void SetPossible_Pos(Board tab,int x, int y){
 	movi_possibilityX = new ArrayList();
  	movi_possibilityY = new ArrayList();

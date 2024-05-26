@@ -10,15 +10,21 @@ import Pieces.*;
 
 public class Play {
 	
+	//Atributos das rodadas
 	private static boolean turno = true;
 	private static int rodada = 0;
 	private static Player p1,p2;
 	private static Board tab;
 	
+
+	/*
+	 * Função que executa uma jogada para o jogador passado para a função
+	 */
 	public static void Jogar(Player jogador, Commons.Color p_color){	
 		
 		Scanner sc = new Scanner(System.in);
 		
+		//variáveis de gerenciamento das jogadas
 		int t1,t2;
 		int m1,m2;
 		
@@ -80,6 +86,9 @@ public class Play {
 			
 	}
 	
+	/*
+	 * Fubnção que checa se uma cordenada passada é válida
+	 */
 	public static boolean ChecaCoordenada(int t1,int t2, Player jogador, Commons.Color p_color){
 		
 		if(tab.board[t1][t2].getIsFree() == true || tab.board[t1][t2].getPiece().getColor() != p_color) {
@@ -94,7 +103,9 @@ public class Play {
 	}
 	
 
-	
+	/**
+	 * Função de início de jogo
+	 */
 	public static void Init_jogo() {
 		Scanner sc = new Scanner(System.in);
 	    

@@ -7,12 +7,16 @@ import generalElements.*;
 
 public class King extends Piece { // classe do rei, herda os atributos e metodos da classe geral peça
     
+	/*
+	 * Construtor de King
+	 */
     public King(char name_piece){
         super();
         this.name_piece = name_piece;
     }
     
     @Override
+	//Função que verifica as possibilidades de movimento para King
     public void SetPossible_Pos(Board tab,int x, int y){
     	System.out.println("Você selecionou um " + ANSI_RED + "REI!" + ANSI_RESET);
         Scanner sc = new Scanner(System.in);

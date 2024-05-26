@@ -7,12 +7,16 @@ import generalElements.Commons.Color;
 
 public class Horse extends Piece { // classe dos cavalos, herda os atributos e metodos da classe geral peça
     
+	/*
+	*  Construtor de Horse
+	 */
     public Horse(char name_piece){
         super();
         this.name_piece = name_piece;
     }
     
     @Override
+	//Função que verifica as possibilidades de movimento para Horse
     public void SetPossible_Pos(Board tab,int x, int y){
     	
     	movi_possibilityX = new ArrayList();

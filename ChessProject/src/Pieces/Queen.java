@@ -6,6 +6,7 @@ import generalElements.*;
 
 public class Queen extends Piece { // classe dos rainha, herda os atributos e metodos da classe geral peça
     
+    //Variáves auxiliares
     private int auxX;
     private int auxY;
     private int dir;
@@ -13,12 +14,14 @@ public class Queen extends Piece { // classe dos rainha, herda os atributos e me
     private int cima;
     private int baixo;
 
+    //Construtor de Queen
     public Queen(char name_piece){
         super();
         this.name_piece = name_piece;
     }
     
     @Override
+    //Função que verifica as possibilidades de movimento para Queen
     public void SetPossible_Pos(Board tab,int x, int y){
 
         movi_possibilityX = new ArrayList();
