@@ -12,7 +12,6 @@ public class Square{ // Classe das Casas do tabuleiro
     private Color c_Color; //Cor da casa
     private Piece m_Piece; //Objeto do tipo peça contido no respectivo quadrado
     private boolean isFree = true; //retorna o status de ocupação da casa 
-    private ImageIcon cor_da_casa;
     
      public Square(){
         super();

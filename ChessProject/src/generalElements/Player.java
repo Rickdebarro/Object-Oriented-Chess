@@ -5,8 +5,6 @@ public class Player {
 
     private String name; // nome do player
 
-    public boolean turn; // player 1 = true, player 2 = false, turno do jogo alterna entre true e false
-
     private Commons.Color p_color; // m_color define a cor das peças do player como Black ou White
 
     private Piece pawn[] = new Pawn[8]; // criação de um vetor de peoes do player
@@ -25,13 +23,6 @@ public class Player {
         this.name = nome;
     }
 
-    public boolean getTurno(){ // retorno o turno do player
-        return turn;
-    }
-
-    public void setTurno(boolean turn){
-        this.turn = turn;
-    }
 
     public void setColor(Commons.Color p_color){
         this.p_color = p_color;
@@ -44,12 +35,6 @@ public class Player {
     public Player(String name, Commons.Color p_color){ // Construtor da classe player
         this.name = name;
         this.p_color = p_color;
-
-        if(this.p_color == Commons.Color.WHITE){
-            this.turn = true;
-        }else{
-            this.turn = false;
-        }
     }
 
     public void InicializaPecas(){
@@ -96,7 +81,6 @@ public class Player {
         System.out.println("--------------------------------");
         System.out.println("Nome do Player: " +  getName());
         System.out.println("Cor das peças: " + getColor());
-        System.out.println("Vez de Jogar? " + getTurno());
         System.out.println("--------------------------------");
     }
 
