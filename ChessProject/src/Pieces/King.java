@@ -27,67 +27,70 @@ public class King extends Piece { // classe do rei, herda os atributos e metodos
     	
     	System.out.println(ANSI_RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
 
+			Commons.Color actual_color = tab.board[x][y].getPiece().getColor();
+
             if(x == 7 && y == 7){
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}
-    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}
+    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_color);
+    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}else checkEat(tab, x-1, y, actual_color);
+    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}else checkEat(tab, x-1, y+1, actual_color);
             }else if(x == 0 || y ==0){
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}
-    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y+1);}
+                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_color);
+    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}else checkEat(tab, x+1, y+1, actual_color);
+    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_color);
             }else if(x==0 && y == 7){
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}
-    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y-1);}
-    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}
+                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_color);
+    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y-1);}else checkEat(tab, x, y, actual_color);
+    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}else checkEat(tab, x, y, actual_color);
             }else if(x==7 && y == 0){
-    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y);}
+    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}else checkEat(tab, x, y, actual_color);
+    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}else checkEat(tab, x-1, y, actual_color);
+    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_color);
             }else if(x == 7){
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x][y+1].getIsFree()){ movi_possibilityX.add(y+1); movi_possibilityY.add(y);}
-    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}
-    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}
-    		    if(tab.board[x-1][y-1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y-1);}
+    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_color);
+    		    if(tab.board[x][y+1].getIsFree()){ movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_color);
+    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}else checkEat(tab, x-1, y+1, actual_color);
+    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}else checkEat(tab, x-1, y, actual_color);
+    		    if(tab.board[x-1][y-1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y-1);}else checkEat(tab, x-1, y-1, actual_color);
             }else if(x == 0){
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}
-    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x][y+1].getIsFree()){ movi_possibilityX.add(y+1); movi_possibilityY.add(y);}
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}
-    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y-1);}
-    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(y-1); movi_possibilityY.add(y);}
-    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}
+                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_color);
+    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}else checkEat(tab, x+1, y+1, actual_color);
+    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_color);
+    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y-1);}else checkEat(tab, x, y-1, actual_color);
+    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}else checkEat(tab, x, y, actual_color);
             }else if(y == 7){
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}
-    		    if(tab.board[x][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}
-    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y-1);}
-    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(y-1); movi_possibilityY.add(y);}
-    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}
+                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_color);
+    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y-1);}else checkEat(tab, x, y, actual_color);
+    		    if(tab.board[x-1][y-1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y-1);}else checkEat(tab, x-1, y-1, actual_color);
+    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}else checkEat(tab, x+1, y-1, actual_color);
 
             }else if(y == 0){
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}
-    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x][y+1].getIsFree()){ movi_possibilityX.add(y+1); movi_possibilityY.add(y);}
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}
+                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_color);
+    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}else checkEat(tab, x+1, y+1, actual_color);
+    		    if(tab.board[x][y+1].getIsFree()){ movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_color);
+    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_color);
             }else{
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}
-    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x][y+1].getIsFree()){ movi_possibilityX.add(x); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}
-    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y-1);}
-    		    if(tab.board[x-1][y-1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y-1);}
-    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}
-    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}
+                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_color);
+    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}else checkEat(tab, x+1, y+1, actual_color);
+    		    if(tab.board[x][y+1].getIsFree()){ movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_color);
+    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}else checkEat(tab, x-1, y+1, actual_color);
+    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y-1);}else checkEat(tab, x, y-1, actual_color);
+    		    if(tab.board[x-1][y-1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y-1);}else checkEat(tab, x-1, y-1, actual_color);
+    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}else checkEat(tab, x-1, y, actual_color);
+    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}else checkEat(tab, x+1, y-1, actual_color);
             }
 
 
-
-
+			
             tab.Print_Board_Possibility(movi_possibilityX, movi_possibilityY);
-
-    }
-    
+			
+		}
+		
+		//teste de nova função para checar a possibilidade de comer, como é um teste, ainda não foi implementada na classe mãe
+		public void checkEat(Board tab,int x,int y, Commons.Color actual_c){
+			//falta inserir check de defesa da peça 
+			if(tab.board[x][y].getPiece().getColor() !=  actual_c && tab.board[x][y].getPiece() != null){
+				movi_possibilityX.add(x);
+				movi_possibilityY.add(y);
+			}
+		}
 }

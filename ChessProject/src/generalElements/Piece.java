@@ -20,7 +20,8 @@ public class Piece {
     protected static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
     protected static final String ANSI_BLACK = "\u001B[30m";
     protected static final String ANSI_RED = "\u001B[31m"; 
-       
+    
+
     public void Setname_piece(char name_piece){
         this.name_piece = name_piece;    
     }
@@ -50,11 +51,12 @@ public class Piece {
     	tab.board[t1][t2].setPiece(null);
     }
     
-    
+    //Retorna Array List que guarda as possibilidades de movimentação em X
     public ArrayList getmovi_possibilityX(){
     	return movi_possibilityX;
     }
-    
+
+    //Retorna Array List que guarda as possibilidades de movimentação em Y
     public ArrayList getmovi_possibilityY(){
     	return movi_possibilityY;
     }
