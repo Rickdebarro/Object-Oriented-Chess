@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import Board.Board;
-import generalElements.Commons.Color;
+import generalElements.Commons.Cor;
 
 public class Piece {
 
-    protected Color mColor; //Cor da peça 
+    protected Cor mCor; //Cor da peça 
     protected char name_piece; // Nome da peça
     protected JLabel png_peca; // icon da peça (Realizar)
     protected ArrayList movi_possibilityX; // Array list com as posições em X possiveis
@@ -33,12 +33,12 @@ public class Piece {
     /*
      * Método padrão que retorna a cor da peça que o chama
      */
-    public Color getColor() {
-        return mColor;
+    public Cor getCor() {
+        return mCor;
     }  
     
-    public void setColor(Commons.Color mcolor){
-        this.mColor = mcolor;
+    public void setCor(Commons.Cor mCor){
+        this.mCor = mCor;
     }
 
     /*

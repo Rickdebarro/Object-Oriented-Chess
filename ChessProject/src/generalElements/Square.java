@@ -2,14 +2,14 @@ package generalElements;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
-import generalElements.Commons.Color;
-
+import javax.swing.*;
+import generalElements.Commons.Cor;
+import java.awt.*;
 /*Esta classe, formará o tabuleiro */
-public class Square{ // Classe das Casas do tabuleiro
+public class Square extends JPanel{ // Classe das Casas do tabuleiro
 
     //Atributes
-    private Color c_Color; //Cor da casa
+    private Cor c_Cor; //Cor da casa
     private Piece m_Piece; //Objeto do tipo peça contido no respectivo quadrado
     private boolean isFree = true; //retorna o status de ocupação da casa 
     
@@ -41,15 +41,15 @@ public class Square{ // Classe das Casas do tabuleiro
     /*
      * Método que define a cor da casa
      */
-    public void setColor(Color c_Color) {
-        this.c_Color = c_Color;
+    public void setCor(Cor c_Cor) {
+        this.c_Cor = c_Cor;
     }
 
     /*
      * Método padrão que retorna a cor da casa
      */
-    public Color getColor() {
-        return c_Color;
+    public Cor getCor() {
+        return c_Cor;
     }
 
      /*
@@ -59,5 +59,16 @@ public class Square{ // Classe das Casas do tabuleiro
         return isFree;
     }
     
+    @Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		draw(g);
+	}
+	
+	public void draw(Graphics g) {
+		Image image = new ImageIcon("PeaoPreto.png").getImage();
+		g.drawImage(image,40,40,80,80,null);
+	}
+
     
 }

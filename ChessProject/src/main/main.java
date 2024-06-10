@@ -1,7 +1,7 @@
 package main;
 import java.util.Scanner;
 import generalElements.*;
-import generalElements.Commons.Color;
+import generalElements.Commons.Cor;
 import Board.Board;
 import GUI_Chess.*;
 

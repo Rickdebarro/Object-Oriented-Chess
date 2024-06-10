@@ -5,7 +5,7 @@ public class Player {
 
     private String name; // nome do player
 
-    private Commons.Color p_color; // m_color define a cor das peças do player como Black ou White
+    private Commons.Cor p_Cor; // m_Cor define a cor das peças do player como Black ou White
 
     private Piece pawn[] = new Pawn[8]; // criação de um vetor de peoes do player
     
@@ -24,17 +24,17 @@ public class Player {
     }
 
 
-    public void setColor(Commons.Color p_color){
-        this.p_color = p_color;
+    public void setCor(Commons.Cor p_Cor){
+        this.p_Cor = p_Cor;
     }
 
-    public Commons.Color getColor(){
-        return p_color;
+    public Commons.Cor getCor(){
+        return p_Cor;
     }
 
-    public Player(String name, Commons.Color p_color){ // Construtor da classe player
+    public Player(String name, Commons.Cor p_Cor){ // Construtor da classe player
         this.name = name;
-        this.p_color = p_color;
+        this.p_Cor = p_Cor;
     }
 
     public void InicializaPecas(){
@@ -80,7 +80,7 @@ public class Player {
     public void PrintPlayer(){
         System.out.println("--------------------------------");
         System.out.println("Nome do Player: " +  getName());
-        System.out.println("Cor das peças: " + getColor());
+        System.out.println("Cor das peças: " + getCor());
         System.out.println("--------------------------------");
     }
 

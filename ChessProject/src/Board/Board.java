@@ -1,11 +1,17 @@
 package Board;
-import generalElements.Commons.Color;
+import generalElements.Commons.Cor;
 
 import java.util.ArrayList;
-
+import javax.swing.JFrame;
+import org.w3c.dom.events.MouseEvent;
 import generalElements.*;
+import java.awt.*;
+import javax.swing.*;
 
-public class Board { // Classe do tabuleriro
+import java.awt.event.MouseListener;
+
+
+public class Board extends JFrame{ // Classe do tabuleriro
 
 
     public Player p1,p2; // Tabuleiro recebe 2 players, p1 White, p2 Black
@@ -28,6 +34,8 @@ public class Board { // Classe do tabuleriro
     }
     public Board(Player p1, Player p2){ // Construtor de Board que inicializa o tabuleiro
         
+        configuracoes();
+
         for(int i = 0 ; i<8 ; i++){ // Loop que define as casas como Black or White
             for(int j = 0 ; j<8 ; j++)
             initSquare(i,j); 
@@ -40,50 +48,50 @@ public class Board { // Classe do tabuleriro
 
 
             board[1][i].setPiece(p1.getPeao(i));
-            board[1][i].getPiece().setColor(Color.WHITE);
+            board[1][i].getPiece().setCor(Cor.WHITE);
             board[6][i].setPiece(p2.getPeao(i));
-            board[6][i].getPiece().setColor(Color.BLACK);
+            board[6][i].getPiece().setCor(Cor.BLACK);
         }
 
         for(int i = 0, j = 0;i<8 && j<2;i = i+7,j++){ //Loop que insere as torres brancas e pretas no tabuleiro
             
             board[0][i].setPiece(p1.getCastle(j));
-            board[0][i].getPiece().setColor(Color.WHITE);
+            board[0][i].getPiece().setCor(Cor.WHITE);
             
             board[7][i].setPiece(p2.getCastle(j));
-            board[7][i].getPiece().setColor(Color.BLACK);
+            board[7][i].getPiece().setCor(Cor.BLACK);
         }
 
         for(int i = 1, j = 0;i<7 && j < 2;i = i+5,j++){ //Loop que insere os cavalos brancos e pretos no tabuleiro
             
             board[0][i].setPiece(p1.getHorse(j));
-            board[0][i].getPiece().setColor(Color.WHITE);
+            board[0][i].getPiece().setCor(Cor.WHITE);
             
             board[7][i].setPiece(p2.getHorse(j));
-            board[7][i].getPiece().setColor(Color.BLACK);
+            board[7][i].getPiece().setCor(Cor.BLACK);
         }
 
         for(int i = 2, j = 0;i<6 && j < 2; i = i+3,j++){ //Loop que insere os bispos brancos e pretos no tabuleiro
            
             board[0][i].setPiece(p1.getBishop(j));
-            board[0][i].getPiece().setColor(Color.WHITE);
+            board[0][i].getPiece().setCor(Cor.WHITE);
             
             board[7][i].setPiece(p2.getBishop(j));
-            board[7][i].getPiece().setColor(Color.BLACK);
+            board[7][i].getPiece().setCor(Cor.BLACK);
         }
         
         board[0][3].setPiece(p1.getKing(0)); // Insere o rei branco no tabuleiro
-        board[0][3].getPiece().setColor(Color.WHITE);
+        board[0][3].getPiece().setCor(Cor.WHITE);
         
         board[7][3].setPiece(p2.getKing(0)); // Insere o rei preto no tabuleiro
-        board[7][3].getPiece().setColor(Color.BLACK);
+        board[7][3].getPiece().setCor(Cor.BLACK);
         
         
         board[0][4].setPiece(p1.getQueen(0)); // Insere a rainha branca no tabuleiro
-        board[0][4].getPiece().setColor(Color.WHITE);
+        board[0][4].getPiece().setCor(Cor.WHITE);
         
         board[7][4].setPiece(p2.getQueen(0)); // Insere a rainha preta no tabuleiro
-        board[7][4].getPiece().setColor(Color.BLACK);
+        board[7][4].getPiece().setCor(Cor.BLACK);
 
         Verificacao();
     }
@@ -107,7 +115,7 @@ public class Board { // Classe do tabuleriro
                 if(board[i][j].getIsFree() == true){
                     System.out.printf(" ");
                 }else{
-                	if(board[i][j].getPiece().getColor() == Color.BLACK) {
+                	if(board[i][j].getPiece().getCor() == Cor.BLACK) {
                 		System.out.print(ANSI_BLACK_BACKGROUND + board[i][j].getPiece().getName_piece() + ANSI_RESET);
                 	}else {
                 		System.out.print(BLACK + ANSI_WHITE_BACKGROUND + board[i][j].getPiece().getName_piece() + ANSI_RESET); // Printa o nome da peça
@@ -148,7 +156,7 @@ public class Board { // Classe do tabuleriro
 					if(board[i][j].getIsFree()){
 	                    System.out.printf(" ");
 	                }else{
-	                	if(board[i][j].getPiece().getColor() == Color.BLACK) {
+	                	if(board[i][j].getPiece().getCor() == Cor.BLACK) {
 	                		System.out.print(ANSI_BLACK_BACKGROUND + board[i][j].getPiece().getName_piece() + ANSI_RESET);
 	                	}else {
 	                		System.out.print(BLACK + ANSI_WHITE_BACKGROUND + board[i][j].getPiece().getName_piece() + ANSI_RESET); // Printa o nome da peça
@@ -170,15 +178,52 @@ public class Board { // Classe do tabuleriro
         board[x][y] = new Square();
 
         if(flag){
-            board[x][y].setColor(Color.WHITE);
+            board[x][y].setCor(Cor.WHITE);
+            board[x][y].setBackground(Color.white);
             flag = false;
         }else{
-            board[x][y].setColor(Color.BLACK);
+            board[x][y].setCor(Cor.BLACK);
+            board[x][y].setBackground(Color.black);
             flag = true;
         }
         if(y == 7){
             flag = !flag;
         }
+
+        this.add(this.board[x][y]);
     }
+
+    public void configuracoes(){
+		this.setVisible(true);
+		this.setSize(700,700);
+		this.setLocationRelativeTo(null);
+		this.setLayout(new GridLayout(8,8));
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
+		
+		// this.addMouseListener(new MouseListener() {
+			
+		// 	@Override
+		// 	public void mouseReleased(MouseEvent e) {
+		// 		// TODO Auto-generated method stub
+		// 		releaseMouse(e);
+		// 	}
+			
+		// 	@Override
+		// 	public void mousePressed(MouseEvent e) {
+		// 		// TODO Auto-generated method stub
+		// 		pressMouse(e);
+		// 	}
+			
+		// 	@Override
+		// 	public void mouseClicked(MouseEvent e) {
+		// 		// TODO Auto-generated method stub
+		// 		clickMouse(e);
+		// 	}
+		// });
+		
+		this.repaint();
+	}
+
 }
 

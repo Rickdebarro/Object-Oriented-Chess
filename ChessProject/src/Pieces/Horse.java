@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import Board.Board;
 import generalElements.*;
-import generalElements.Commons.Color;
+import generalElements.Commons.Cor;
 
 public class Horse extends Piece { // classe dos cavalos, herda os atributos e metodos da classe geral peça
     
@@ -25,13 +25,13 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     	System.out.println("Você selecionou um " + ANSI_RED + "CAVALO!" + ANSI_RESET);
     	System.out.println(ANSI_RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
     	  	
-    	if(tab.board[x][y].getPiece().getColor() == Commons.Color.WHITE){
+    	if(tab.board[x][y].getPiece().getCor() == Commons.Cor.WHITE){
     		if(x-2 >= 0) {
     			if(y-1 >= 0) {
     				if(tab.board[x-2][y-1].getIsFree()) {
     					movi_possibilityX.add(x-2);
         				movi_possibilityY.add(y-1);
-    				}else if(tab.board[x-2][y-1].getPiece().getColor() == Commons.Color.BLACK ){
+    				}else if(tab.board[x-2][y-1].getPiece().getCor() == Commons.Cor.BLACK ){
     					movi_possibilityX.add(x-2);
         				movi_possibilityY.add(y-1);
     				}
@@ -40,7 +40,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if(tab.board[x-2][y+1].getIsFree()) {
     				movi_possibilityX.add(x-2);
     				movi_possibilityY.add(y+1);
-    				}else if(tab.board[x-2][y+1].getPiece().getColor() == Commons.Color.BLACK) {
+    				}else if(tab.board[x-2][y+1].getPiece().getCor() == Commons.Cor.BLACK) {
     					movi_possibilityX.add(x-2);
         				movi_possibilityY.add(y+1);
     				}
@@ -51,7 +51,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if( tab.board[x-1][y+2].getIsFree()) {
     					movi_possibilityX.add(x-1);
         				movi_possibilityY.add(y+2);
-    				}else if(tab.board[x-1][y+2].getPiece().getColor() == Commons.Color.BLACK) {
+    				}else if(tab.board[x-1][y+2].getPiece().getCor() == Commons.Cor.BLACK) {
     					movi_possibilityX.add(x-1);
         				movi_possibilityY.add(y+2);
     				}
@@ -60,7 +60,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if(tab.board[x+1][y+2].getIsFree()) {
     					movi_possibilityX.add(x+1);
     					movi_possibilityY.add(y+2);
-    				}else if(tab.board[x+1][y+2].getPiece().getColor() == Commons.Color.BLACK) {
+    				}else if(tab.board[x+1][y+2].getPiece().getCor() == Commons.Cor.BLACK) {
     					movi_possibilityX.add(x+1);
     					movi_possibilityY.add(y+2);
     				}
@@ -71,7 +71,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if(tab.board[x-1][y-2].getIsFree()) {
     					movi_possibilityX.add(x-1);
     					movi_possibilityY.add(y-2);
-    				}else if(tab.board[x-1][y-2].getPiece().getColor() == Commons.Color.BLACK) {
+    				}else if(tab.board[x-1][y-2].getPiece().getCor() == Commons.Cor.BLACK) {
     					movi_possibilityX.add(x-1);
     					movi_possibilityY.add(y-2);
     				}
@@ -80,7 +80,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if(tab.board[x+1][y-2].getIsFree()) {
     					movi_possibilityX.add(x+1);
     					movi_possibilityY.add(y-2);
-    				}else if(tab.board[x+1][y-2].getPiece().getColor() == Commons.Color.BLACK) {
+    				}else if(tab.board[x+1][y-2].getPiece().getCor() == Commons.Cor.BLACK) {
     					movi_possibilityX.add(x+1);
     					movi_possibilityY.add(y-2);
     				}
@@ -91,7 +91,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if(tab.board[x+2][y-1].getIsFree()) {
     					movi_possibilityX.add(x+2);
     					movi_possibilityY.add(y-1);
-    				}else if(tab.board[x+2][y-1].getPiece().getColor() == Commons.Color.BLACK) {
+    				}else if(tab.board[x+2][y-1].getPiece().getCor() == Commons.Cor.BLACK) {
     					movi_possibilityX.add(x+2);
     					movi_possibilityY.add(y-1);
     				}
@@ -100,19 +100,19 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if(tab.board[x+2][y+1].getIsFree()) {
     					movi_possibilityX.add(x+2);
     					movi_possibilityY.add(y+1);
-    				}else if(tab.board[x+2][y+1].getPiece().getColor() == Commons.Color.BLACK) {
+    				}else if(tab.board[x+2][y+1].getPiece().getCor() == Commons.Cor.BLACK) {
     					movi_possibilityX.add(x+2);
     					movi_possibilityY.add(y+1);
     				}
     			}
     		}
-    	}else if(tab.board[x][y].getPiece().getColor() == Commons.Color.BLACK) {
+    	}else if(tab.board[x][y].getPiece().getCor() == Commons.Cor.BLACK) {
     		if(x-2 >= 0) {
     			if(y-1 >= 0) {
     				if( tab.board[x-2][y-1].getIsFree()) {
     					movi_possibilityX.add(x-2);
         				movi_possibilityY.add(y-1);
-    				}else if(tab.board[x-2][y-1].getPiece().getColor() == Commons.Color.WHITE) {
+    				}else if(tab.board[x-2][y-1].getPiece().getCor() == Commons.Cor.WHITE) {
     					movi_possibilityX.add(x-2);
         				movi_possibilityY.add(y-1);
     				}
@@ -121,7 +121,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if( tab.board[x-2][y+1].getIsFree()) {
     					movi_possibilityX.add(x-2);
     					movi_possibilityY.add(y+1);
-    				}else if(tab.board[x-2][y+1].getPiece().getColor() == Commons.Color.WHITE) {
+    				}else if(tab.board[x-2][y+1].getPiece().getCor() == Commons.Cor.WHITE) {
     					movi_possibilityX.add(x-2);
     					movi_possibilityY.add(y+1);
     				}
@@ -132,7 +132,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if( tab.board[x-1][y+2].getIsFree()) {
     					movi_possibilityX.add(x-1);
         				movi_possibilityY.add(y+2);
-    				}else if(tab.board[x-1][y+2].getPiece().getColor() == Commons.Color.WHITE) {
+    				}else if(tab.board[x-1][y+2].getPiece().getCor() == Commons.Cor.WHITE) {
     					movi_possibilityX.add(x-1);
         				movi_possibilityY.add(y+2);
     				}
@@ -141,7 +141,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if( tab.board[x+1][y+2].getIsFree()) {
     					movi_possibilityX.add(x+1);
     					movi_possibilityY.add(y+2);
-    				}else if(tab.board[x+1][y+2].getPiece().getColor() == Commons.Color.WHITE) {
+    				}else if(tab.board[x+1][y+2].getPiece().getCor() == Commons.Cor.WHITE) {
     					movi_possibilityX.add(x+1);
     					movi_possibilityY.add(y+2);
     				}
@@ -152,7 +152,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if( tab.board[x-1][y-2].getIsFree()) {
     					movi_possibilityX.add(x-1);
     					movi_possibilityY.add(y-2);
-    				}else if(tab.board[x-1][y-2].getPiece().getColor() == Commons.Color.WHITE) {
+    				}else if(tab.board[x-1][y-2].getPiece().getCor() == Commons.Cor.WHITE) {
     					movi_possibilityX.add(x-1);
     					movi_possibilityY.add(y-2);
     				}
@@ -161,7 +161,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if( tab.board[x+1][y-2].getIsFree()) {
     					movi_possibilityX.add(x+1);
     					movi_possibilityY.add(y-2);
-    				}else if(tab.board[x+1][y-2].getPiece().getColor() == Commons.Color.WHITE) {
+    				}else if(tab.board[x+1][y-2].getPiece().getCor() == Commons.Cor.WHITE) {
     					movi_possibilityX.add(x+1);
     					movi_possibilityY.add(y-2);
     				}
@@ -172,7 +172,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if( tab.board[x+2][y-1].getIsFree()) {
     					movi_possibilityX.add(x+2);
     					movi_possibilityY.add(y-1);
-    				}else if(tab.board[x+2][y-1].getPiece().getColor() == Commons.Color.WHITE) {
+    				}else if(tab.board[x+2][y-1].getPiece().getCor() == Commons.Cor.WHITE) {
     					movi_possibilityX.add(x+2);
     					movi_possibilityY.add(y-1);
     				}
@@ -181,7 +181,7 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     				if( tab.board[x+2][y+1].getIsFree()) {
     					movi_possibilityX.add(x+2);
     					movi_possibilityY.add(y+1);
-    				}else if(tab.board[x+2][y+1].getPiece().getColor() == Commons.Color.WHITE) {
+    				}else if(tab.board[x+2][y+1].getPiece().getCor() == Commons.Cor.WHITE) {
     					movi_possibilityX.add(x+2);
     					movi_possibilityY.add(y+1);
     				}

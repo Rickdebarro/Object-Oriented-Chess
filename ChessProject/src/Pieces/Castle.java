@@ -36,7 +36,7 @@ public void SetPossible_Pos(Board tab,int x, int y){
             movi_possibilityX.add(x);
             movi_possibilityY.add(esq-1);
         }else{
-            if(tab.board[x][esq-1].getPiece().getColor() != tab.board[x][y].getPiece().getColor()){
+            if(tab.board[x][esq-1].getPiece().getCor() != tab.board[x][y].getPiece().getCor()){
                 movi_possibilityX.add(x);
                 movi_possibilityY.add(esq-1);
                 break;
@@ -52,7 +52,7 @@ public void SetPossible_Pos(Board tab,int x, int y){
             movi_possibilityX.add(x);
             movi_possibilityY.add(dir+1);
         }else{
-            if(tab.board[x][dir+1].getPiece().getColor() != tab.board[x][y].getPiece().getColor()){
+            if(tab.board[x][dir+1].getPiece().getCor() != tab.board[x][y].getPiece().getCor()){
                 movi_possibilityX.add(x);
                 movi_possibilityY.add(dir+1);
                 break;
@@ -69,7 +69,7 @@ public void SetPossible_Pos(Board tab,int x, int y){
             movi_possibilityX.add(baixo+1);
             movi_possibilityY.add(y);
         }else{
-            if(tab.board[baixo+1][y].getPiece().getColor() != tab.board[x][y].getPiece().getColor()){
+            if(tab.board[baixo+1][y].getPiece().getCor() != tab.board[x][y].getPiece().getCor()){
                 movi_possibilityX.add(baixo+1);
                 movi_possibilityY.add(y);
                 break;
@@ -85,7 +85,7 @@ public void SetPossible_Pos(Board tab,int x, int y){
             movi_possibilityX.add(cima-1);
             movi_possibilityY.add(y);
         }else{
-            if(tab.board[cima-1][y].getPiece().getColor() != tab.board[x][y].getPiece().getColor()){
+            if(tab.board[cima-1][y].getPiece().getCor() != tab.board[x][y].getPiece().getCor()){
                 movi_possibilityX.add(cima-1);
                 movi_possibilityY.add(y);
                 break;

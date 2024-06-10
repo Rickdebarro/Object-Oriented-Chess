@@ -36,7 +36,7 @@ public class Bishop extends Piece {
                 movi_possibilityX.add(auxX+1);
                 movi_possibilityY.add(auxY+1);
             }else{
-                if(tab.board[x][y].getPiece().getColor() != tab.board[auxX+1][auxY+1].getPiece().getColor()){
+                if(tab.board[x][y].getPiece().getCor() != tab.board[auxX+1][auxY+1].getPiece().getCor()){
                     movi_possibilityX.add(auxX+1);
                     movi_possibilityY.add(auxY+1);
                     break;
@@ -56,7 +56,7 @@ public class Bishop extends Piece {
                 movi_possibilityX.add(auxX+1);
                 movi_possibilityY.add(auxY-1);
             }else{
-                if(tab.board[x][y].getPiece().getColor() != tab.board[auxX+1][auxY-1].getPiece().getColor()){
+                if(tab.board[x][y].getPiece().getCor() != tab.board[auxX+1][auxY-1].getPiece().getCor()){
                     movi_possibilityX.add(auxX+1);
                     movi_possibilityY.add(auxY-1);
                     break;
@@ -76,7 +76,7 @@ public class Bishop extends Piece {
                 movi_possibilityX.add(auxX-1);
                 movi_possibilityY.add(auxY+1);
             }else{
-                if(tab.board[x][y].getPiece().getColor() != tab.board[auxX-1][auxY+1].getPiece().getColor()){
+                if(tab.board[x][y].getPiece().getCor() != tab.board[auxX-1][auxY+1].getPiece().getCor()){
                     movi_possibilityX.add(auxX-1);
                     movi_possibilityY.add(auxY+1);
                     break;
@@ -96,7 +96,7 @@ public class Bishop extends Piece {
                 movi_possibilityX.add(auxX-1);
                 movi_possibilityY.add(auxY-1);
             }else{
-                if(tab.board[x][y].getPiece().getColor() != tab.board[auxX-1][auxY-1].getPiece().getColor()){
+                if(tab.board[x][y].getPiece().getCor() != tab.board[auxX-1][auxY-1].getPiece().getCor()){
                     movi_possibilityX.add(auxX-1);
                     movi_possibilityY.add(auxY-1);
                     break;

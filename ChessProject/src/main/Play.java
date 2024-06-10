@@ -1,7 +1,7 @@
 package main;
 import generalElements.Commons;
 import generalElements.Player;
-import generalElements.Commons.Color;
+import generalElements.Commons.Cor;
 
 import java.util.Scanner;
 
@@ -20,7 +20,7 @@ public class Play {
 	/*
 	 * Função que executa uma jogada para o jogador passado para a função
 	 */
-	public static void Jogar(Player jogador, Commons.Color p_color){	
+	public static void Jogar(Player jogador, Commons.Cor p_Cor){	
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -43,7 +43,11 @@ public class Play {
 			
 			 t2 = sc.nextInt();
 			 
-		}while(!ChecaCoordenada(t1, t2, jogador, p_color));
+			 if(t1 >= 8 || t2 >= 8){
+				System.out.println(" Coodenada Invalida, Digite um X e Y Válido!");
+				continue;
+			 }
+		}while(!ChecaCoordenada(t1, t2, jogador, p_Cor));
 		
 		tab.board[t1][t2].getPiece().SetPossible_Pos(tab,t1, t2);
 		
@@ -77,11 +81,11 @@ public class Play {
 		rodada++;
 		if(turno == true) {
 			turno = false;
-			Jogar(p2, Commons.Color.BLACK);
+			Jogar(p2, Commons.Cor.BLACK);
 			
 		}else {
 			turno = true;
-			Jogar(p1, Commons.Color.WHITE);
+			Jogar(p1, Commons.Cor.WHITE);
 		}
 			
 	}
@@ -89,9 +93,9 @@ public class Play {
 	/*
 	 * Fubnção que checa se uma cordenada passada é válida
 	 */
-	public static boolean ChecaCoordenada(int t1,int t2, Player jogador, Commons.Color p_color){
+	public static boolean ChecaCoordenada(int t1,int t2, Player jogador, Commons.Cor p_Cor){
 		
-		if(tab.board[t1][t2].getIsFree() == true || tab.board[t1][t2].getPiece().getColor() != p_color) {
+		if(tab.board[t1][t2].getIsFree() == true || tab.board[t1][t2].getPiece().getCor() != p_Cor) {
 			
 			System.out.println("Coodenada Invalida!");
 			
@@ -114,11 +118,11 @@ public class Play {
 	    System.out.println("");
 	    System.out.println("insira o nome do Player 1: ");
 	    String nome_player1 = sc.nextLine();
-	    p1 = new Player(nome_player1, Color.WHITE); // Construtor de Player
+	    p1 = new Player(nome_player1, Cor.WHITE); // Construtor de Player
 	    System.out.println("insira o nome do Player 2: ");
 	    String nome_player2 = sc.nextLine();
 	    
-	    p2 = new Player(nome_player2, Color.BLACK); // Construtor de Player
+	    p2 = new Player(nome_player2, Cor.BLACK); // Construtor de Player
 
 	    System.out.println("Bom Jogo " + p1.getName() + " e " + p2.getName() + " , Que vença o melhor!");
 	    tab = new Board(p1,p2); // Construtor da classe Board recebe 2 players (p1,p2) e inicaliza o tabuleiro
@@ -127,7 +131,7 @@ public class Play {
 	    p1.PrintPlayer(); // Menu do objeto p1
 	    p2.PrintPlayer(); // Menu do objeto p2
 	    
-	    Jogar(p1,Color.WHITE);
+	    Jogar(p1,Cor.WHITE);
 	}
 	
 }

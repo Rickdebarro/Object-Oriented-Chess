@@ -1,6 +1,6 @@
 package Pieces;
 import generalElements.*;
-import generalElements.Commons.Color;
+import generalElements.Commons.Cor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class Pawn extends Piece { // classe dos peoes, herda os atributos e meto
     	 System.out.println("Você selecionou um " + ANSI_RED + "PEAO!" + ANSI_RESET);
     	System.out.println(ANSI_RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
     	
-    	if(tab.board[x][y].getPiece().getColor() == Commons.Color.WHITE){
+    	if(tab.board[x][y].getPiece().getCor() == Commons.Cor.WHITE){
     		
     		if(x != 7) {
     			if(tab.board[x+1][y].getIsFree()){
@@ -45,21 +45,21 @@ public class Pawn extends Piece { // classe dos peoes, herda os atributos e meto
     				}
     		}
     		if(y == 0) {
-    			if(tab.board[x+1][y+1].getPiece() != null && tab.board[x+1][y+1].getPiece().getColor() == Commons.Color.BLACK) {
+    			if(tab.board[x+1][y+1].getPiece() != null && tab.board[x+1][y+1].getPiece().getCor() == Commons.Cor.BLACK) {
     				movi_possibilityX.add(x+1);
 	    			movi_possibilityY.add(y+1);
         		}
     		}else if(y == 7) {
-    			if(tab.board[x+1][y-1].getPiece() != null && tab.board[x+1][y-1].getPiece().getColor() == Commons.Color.BLACK) {
+    			if(tab.board[x+1][y-1].getPiece() != null && tab.board[x+1][y-1].getPiece().getCor() == Commons.Cor.BLACK) {
     				movi_possibilityX.add(x+1);
 	    			movi_possibilityY.add(y-1);
         		}
     		}else {
-    			if(tab.board[x+1][y+1].getPiece() != null && tab.board[x+1][y+1].getPiece().getColor() == Commons.Color.BLACK) {
+    			if(tab.board[x+1][y+1].getPiece() != null && tab.board[x+1][y+1].getPiece().getCor() == Commons.Cor.BLACK) {
     				movi_possibilityX.add(x+1);
 	    			movi_possibilityY.add(y+1);
         		}
-    			if(tab.board[x+1][y-1].getPiece() != null && tab.board[x+1][y-1].getPiece().getColor() == Commons.Color.BLACK) {
+    			if(tab.board[x+1][y-1].getPiece() != null && tab.board[x+1][y-1].getPiece().getCor() == Commons.Cor.BLACK) {
     				movi_possibilityX.add(x+1);
 	    			movi_possibilityY.add(y-1);
         		}
@@ -79,21 +79,21 @@ public class Pawn extends Piece { // classe dos peoes, herda os atributos e meto
     				}
     		}
     		if(y == 0) {
-    			if(tab.board[x-1][y+1].getPiece() != null && tab.board[x-1][y+1].getPiece().getColor() == Commons.Color.WHITE) {
+    			if(tab.board[x-1][y+1].getPiece() != null && tab.board[x-1][y+1].getPiece().getCor() == Commons.Cor.WHITE) {
     				movi_possibilityX.add(x-1);
 	    			movi_possibilityY.add(y+1);
         		}
     		}else if(y == 7) {
-    			if(tab.board[x-1][y-1].getPiece() != null && tab.board[x-1][y-1].getPiece().getColor() == Commons.Color.WHITE) {
+    			if(tab.board[x-1][y-1].getPiece() != null && tab.board[x-1][y-1].getPiece().getCor() == Commons.Cor.WHITE) {
     				movi_possibilityX.add(x-1);
 	    			movi_possibilityY.add(y-1);
         		}
     		}else {
-    			if(tab.board[x-1][y+1].getPiece() != null && tab.board[x-1][y+1].getPiece().getColor() == Commons.Color.WHITE) {
+    			if(tab.board[x-1][y+1].getPiece() != null && tab.board[x-1][y+1].getPiece().getCor() == Commons.Cor.WHITE) {
     				movi_possibilityX.add(x-1);
 	    			movi_possibilityY.add(y+1);
         		}
-    			if(tab.board[x-1][y-1].getPiece() != null && tab.board[x-1][y-1].getPiece().getColor() == Commons.Color.WHITE) {
+    			if(tab.board[x-1][y-1].getPiece() != null && tab.board[x-1][y-1].getPiece().getCor() == Commons.Cor.WHITE) {
     				movi_possibilityX.add(x-1);
 	    			movi_possibilityY.add(y-1);
         		}
