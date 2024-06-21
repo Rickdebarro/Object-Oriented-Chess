@@ -2,9 +2,8 @@ package main;
 import generalElements.Commons;
 import generalElements.Player;
 import generalElements.Commons.Cor;
-
 import java.util.Scanner;
-
+import java.io.*;
 import Board.Board;
 import Pieces.*;
 
@@ -15,12 +14,25 @@ public class Play {
 	private static int rodada = 0;
 	private static Player p1,p2;
 	private static Board tab;
+	private static File arq;
+	private static String Nome_do_Arquivo;
 	
+	
+	public static void abreArquivo() throws IOException{
+		
+		File arq = new File(Nome_do_Arquivo);
+		
+		if(arq.createNewFile()) {
+			System.out.println("Arquivo criado: "+ arq.getName()+ " com qtde de bytes: "+ arq.length());
+		} else {
+			System.out.println("Arquivo já existe "+ arq.getAbsoluteFile());
+		}
+	}
 
 	/*
 	 * Função que executa uma jogada para o jogador passado para a função
 	 */
-	public static void Jogar(Player jogador, Commons.Cor p_Cor){	
+	public static void Jogar(Player jogador, Commons.Cor p_Cor) throws IOException{	
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -78,6 +90,8 @@ public class Play {
 		
 		tab.board[t1][t2].getPiece().move(tab,t1,t2, m1, m2);
 		
+		String aux = jogador.getName() + ": " +  tab.board[m1][m2].getPiece().getClass().getSimpleName() + " " +  String.valueOf(m1) + "|" + String.valueOf(m2) + "\n";
+		gravaBuffered(aux);
 		rodada++;
 		if(turno == true) {
 			turno = false;
@@ -109,19 +123,25 @@ public class Play {
 
 	/**
 	 * Função de início de jogo
+	 * @throws IOException 
 	 */
-	public static void Init_jogo() {
+	public static void Init_jogo() throws IOException {
 		Scanner sc = new Scanner(System.in);
 	    
 	    System.out.println("Bem vindos ao Clube de Xadrez!");
 	    System.out.println("------------------------------");
 	    System.out.println("");
+		System.out.println("Digite o Nome do Arquivo que deseja criar para obter a visualização das peças");
+		Nome_do_Arquivo = sc.nextLine();
+		abreArquivo();
+		System.out.println("");
+		System.out.println("------------------------------");
 	    System.out.println("insira o nome do Player 1: ");
 	    String nome_player1 = sc.nextLine();
 	    p1 = new Player(nome_player1, Cor.WHITE); // Construtor de Player
 	    System.out.println("insira o nome do Player 2: ");
 	    String nome_player2 = sc.nextLine();
-	    
+	    gravaBuffered(nome_player1 + " " + nome_player2 + "\n" + "------------------------------" + "\n");
 	    p2 = new Player(nome_player2, Cor.BLACK); // Construtor de Player
 
 	    System.out.println("Bom Jogo " + p1.getName() + " e " + p2.getName() + " , Que vença o melhor!");
@@ -132,6 +152,27 @@ public class Play {
 	    p2.PrintPlayer(); // Menu do objeto p2
 	    
 	    Jogar(p1,Cor.WHITE);
+	}
+
+	public static void gravaBuffered(String grava) throws IOException{
+		BufferedWriter b = new BufferedWriter(new FileWriter(Nome_do_Arquivo, true));
+		
+		b.write(grava + "\n");
+		
+		b.close();
+		
+	}
+
+	public static void leBuffered() throws IOException {
+		BufferedReader b = new BufferedReader(new FileReader(Nome_do_Arquivo));
+		
+		String linha = "--------\n";
+		System.out.println(linha);
+		
+		while((linha=b.readLine())!= null) {
+			System.out.println(linha);
+		}
+		b.close();
 	}
 	
 }
