@@ -1,7 +1,7 @@
 package Pieces;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.math.*;
 import Board.Board;
 import generalElements.*;
 
@@ -29,68 +29,21 @@ public class King extends Piece { // classe do rei, herda os atributos e metodos
 
 			Commons.Cor actual_Cor = tab.board[x][y].getPiece().getCor();
 
-            if(x == 7 && y == 7){
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_Cor);
-    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}else checkEat(tab, x-1, y, actual_Cor);
-    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}else checkEat(tab, x-1, y+1, actual_Cor);
-            }else if(x == 0 || y ==0){
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_Cor);
-    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}else checkEat(tab, x+1, y+1, actual_Cor);
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_Cor);
-            }else if(x==0 && y == 7){
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_Cor);
-    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y-1);}else checkEat(tab, x, y, actual_Cor);
-    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}else checkEat(tab, x, y, actual_Cor);
-            }else if(x==7 && y == 0){
-    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}else checkEat(tab, x, y, actual_Cor);
-    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}else checkEat(tab, x-1, y, actual_Cor);
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_Cor);
-            }else if(x == 7){
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_Cor);
-    		    if(tab.board[x][y+1].getIsFree()){ movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_Cor);
-    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}else checkEat(tab, x-1, y+1, actual_Cor);
-    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}else checkEat(tab, x-1, y, actual_Cor);
-    		    if(tab.board[x-1][y-1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y-1);}else checkEat(tab, x-1, y-1, actual_Cor);
-            }else if(x == 0){
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_Cor);
-    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}else checkEat(tab, x+1, y+1, actual_Cor);
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_Cor);
-    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y-1);}else checkEat(tab, x, y-1, actual_Cor);
-    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}else checkEat(tab, x, y, actual_Cor);
-            }else if(y == 7){
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_Cor);
-    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y-1);}else checkEat(tab, x, y, actual_Cor);
-    		    if(tab.board[x-1][y-1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y-1);}else checkEat(tab, x-1, y-1, actual_Cor);
-    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}else checkEat(tab, x+1, y-1, actual_Cor);
-
-            }else if(y == 0){
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_Cor);
-    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}else checkEat(tab, x+1, y+1, actual_Cor);
-    		    if(tab.board[x][y+1].getIsFree()){ movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_Cor);
-    		    if(tab.board[x][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_Cor);
-            }else{
-                if(tab.board[x+1][y].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y);}else checkEat(tab, x+1, y, actual_Cor);
-    		    if(tab.board[x+1][y+1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y+1);}else checkEat(tab, x+1, y+1, actual_Cor);
-    		    if(tab.board[x][y+1].getIsFree()){ movi_possibilityX.add(x); movi_possibilityY.add(y+1);}else checkEat(tab, x, y+1, actual_Cor);
-    		    if(tab.board[x-1][y+1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y+1);}else checkEat(tab, x-1, y+1, actual_Cor);
-    		    if(tab.board[x][y-1].getIsFree()){movi_possibilityX.add(x); movi_possibilityY.add(y-1);}else checkEat(tab, x, y-1, actual_Cor);
-    		    if(tab.board[x-1][y-1].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y-1);}else checkEat(tab, x-1, y-1, actual_Cor);
-    		    if(tab.board[x-1][y].getIsFree()){movi_possibilityX.add(x-1); movi_possibilityY.add(y);}else checkEat(tab, x-1, y, actual_Cor);
-    		    if(tab.board[x+1][y-1].getIsFree()){movi_possibilityX.add(x+1); movi_possibilityY.add(y-1);}else checkEat(tab, x+1, y-1, actual_Cor);
-            }
-
-
+			for(int i = 0 ; i< 8 ; i++){
+				for(int j = 0 ; j< 8 ; j++){
+					if(Math.abs(x-i) == 1){ 
+						if(Math.abs(y-j) == 1 || Math.abs(y-j) == 0){
+							if(tab.board[i][j].getIsFree()){
+								movi_possibilityX.add(i);
+								movi_possibilityY.add(j);
+							}else checkEat(tab, i, j, actual_Cor);
+						}
+					}	
+				}
+			}
 			
             tab.Print_Board_Possibility(movi_possibilityX, movi_possibilityY);
 			
 		}
 		
-		//teste de nova função para checar a possibilidade de comer, como é um teste, ainda não foi implementada na classe mãe
-		public void checkEat(Board tab,int x,int y, Commons.Cor actual_c){
-			//falta inserir check de defesa da peça 
-			if(tab.board[x][y].getPiece().getCor() !=  actual_c && tab.board[x][y].getPiece() != null){
-				movi_possibilityX.add(x);
-				movi_possibilityY.add(y);
-			}
-		}
 }

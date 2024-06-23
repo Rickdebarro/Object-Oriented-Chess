@@ -3,13 +3,8 @@ import generalElements.Commons.Cor;
 
 import java.util.ArrayList;
 import javax.swing.JFrame;
-import org.w3c.dom.events.MouseEvent;
 import generalElements.*;
 import java.awt.*;
-import javax.swing.*;
-
-import java.awt.event.MouseListener;
-
 
 public class Board extends JFrame{ // Classe do tabuleriro
 
@@ -225,5 +220,10 @@ public class Board extends JFrame{ // Classe do tabuleriro
 		this.repaint();
 	}
 
+    static public boolean isinside(int x, int y){
+        if(x > 7 || x < 0) return false;
+        if(y > 7 || y < 0) return false;
+        return true;
+    }
 }
 

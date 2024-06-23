@@ -105,7 +105,7 @@ public class Play {
 	}
 	
 	/*
-	 * Fubnção que checa se uma cordenada passada é válida
+	 * Função que checa se uma cordenada passada é válida
 	 */
 	public static boolean ChecaCoordenada(int t1,int t2, Player jogador, Commons.Cor p_Cor){
 		

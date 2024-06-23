@@ -2,6 +2,7 @@ package generalElements;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import java.math.*;
 
 import Board.Board;
 import generalElements.Commons.Cor;
@@ -61,4 +62,15 @@ public class Piece {
     	return movi_possibilityY;
     }
     
+    //teste de nova função para checar a possibilidade de comer, como é um teste, ainda não foi implementada na classe mãe
+		public boolean checkEat(Board tab,int x,int y, Commons.Cor actual_c){
+			if(tab.board[x][y].getPiece() == null) return false;            
+			if(tab.board[x][y].getPiece().getCor() !=  actual_c){
+				movi_possibilityX.add(x);
+				movi_possibilityY.add(y);
+                return true;
+			}
+            return false;
+		}
+
 }

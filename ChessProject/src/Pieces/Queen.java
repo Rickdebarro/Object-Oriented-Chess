@@ -7,12 +7,7 @@ import generalElements.*;
 public class Queen extends Piece { // classe dos rainha, herda os atributos e metodos da classe geral peça
     
     //Variáves auxiliares
-    private int auxX;
-    private int auxY;
-    private int dir;
-    private int esq;
-    private int cima;
-    private int baixo;
+    boolean lock;
 
     //Construtor de Queen
     public Queen(char name_piece){
@@ -29,154 +24,153 @@ public class Queen extends Piece { // classe dos rainha, herda os atributos e me
 
     	System.out.println("Você selecionou um " + ANSI_RED+ "RAINHA!" + ANSI_RESET);
         System.out.println(ANSI_RED + "As Movimentações possiveis estão marcadas em amarelo!" + ANSI_RESET);
+
+		Commons.Cor actual_Cor = tab.board[x][y].getPiece().getCor();
+
         
-        auxX = x; auxY = y;
+        int ix = x;
+        int iy = y;
+        lock = true;
 
-        while(auxX+1 <= 7 && auxY+1 <= 7){
-            if(tab.board[auxX+1][auxY+1].getIsFree()){
-                movi_possibilityX.add(auxX+1);
-                movi_possibilityY.add(auxY+1);
-            }else{
-                if(tab.board[x][y].getPiece().getCor() != tab.board[auxX+1][auxY+1].getPiece().getCor()){
-                    movi_possibilityX.add(auxX+1);
-                    movi_possibilityY.add(auxY+1);
-                    break;
-                }else{
-                    break;
+        while (lock) {
+            ix++;
+            if (tab.isinside(ix, iy)) {
+                if (tab.board[ix][iy].getIsFree()) {
+                    movi_possibilityX.add(ix);
+                    movi_possibilityY.add(iy);
+                } else {
+                    checkEat(tab, ix, iy, actual_Cor);
+                    lock = false;
                 }
-            }
-
-            auxX++;
-            auxY++;
+            } else
+                lock = false;
         }
 
-        auxX = x; auxY = y;
+        ix = x;
+        iy = y;
+        lock = true;
 
-        while(auxX+1 <=7 && auxY-1 >= 0){
-            if(tab.board[auxX+1][auxY-1].getIsFree()){
-                movi_possibilityX.add(auxX+1);
-                movi_possibilityY.add(auxY-1);
-            }else{
-                if(tab.board[x][y].getPiece().getCor() != tab.board[auxX+1][auxY-1].getPiece().getCor()){
-                    movi_possibilityX.add(auxX+1);
-                    movi_possibilityY.add(auxY-1);
-                    break;
-                }else{
-                    break;
+        while (lock) {
+            ix--;
+            if (tab.isinside(ix, iy)) {
+                if (tab.board[ix][iy].getIsFree()) {
+                    movi_possibilityX.add(ix);
+                    movi_possibilityY.add(iy);
+                } else {
+                    checkEat(tab, ix, iy, actual_Cor);
+                    lock = false;
                 }
-            }
-
-            auxX++;
-            auxY--;
+            } else
+                lock = false;
         }
 
-        auxX = x; auxY = y;
+        ix = x;
+        iy = y;
+        lock = true;
 
-        while(auxX-1 >= 0 && auxY+1 <= 7){
-            if(tab.board[auxX-1][auxY+1].getIsFree()){
-                movi_possibilityX.add(auxX-1);
-                movi_possibilityY.add(auxY+1);
-            }else{
-                if(tab.board[x][y].getPiece().getCor() != tab.board[auxX-1][auxY+1].getPiece().getCor()){
-                    movi_possibilityX.add(auxX-1);
-                    movi_possibilityY.add(auxY+1);
-                    break;
-                }else{
-                    break;
+        while (lock) {
+            iy--;
+            if (tab.isinside(ix, iy)) {
+                if (tab.board[ix][iy].getIsFree()) {
+                    movi_possibilityX.add(ix);
+                    movi_possibilityY.add(iy);
+                } else {
+                    checkEat(tab, ix, iy, actual_Cor);
+                    lock = false;
                 }
-            }
-
-            auxX--;
-            auxY++;
+            } else
+                lock = false;
         }
 
-        auxX = x; auxY = y;
+        ix = x;
+        iy = y;
+        lock = true;
 
-        while(auxX-1 >= 0 && auxY-1 >= 0){
-            if(tab.board[auxX-1][auxY-1].getIsFree()){
-                movi_possibilityX.add(auxX-1);
-                movi_possibilityY.add(auxY-1);
-            }else{
-                if(tab.board[x][y].getPiece().getCor() != tab.board[auxX-1][auxY-1].getPiece().getCor()){
-                    movi_possibilityX.add(auxX-1);
-                    movi_possibilityY.add(auxY-1);
-                    break;
-                }else{
-                    break;
+        while (lock) {
+            iy++;
+            if (tab.isinside(ix, iy)) {
+                if (tab.board[ix][iy].getIsFree()) {
+                    movi_possibilityX.add(ix);
+                    movi_possibilityY.add(iy);
+                } else {
+                    checkEat(tab, ix, iy, actual_Cor);
+                    lock = false;
                 }
-            }
-
-            auxX--;
-            auxY--;
+            } else
+                lock = false;
         }
 
-        dir = y;esq = y;cima = x;baixo = x;
+        ix = x;
+        iy = y;
+        lock = true;
 
-    while(esq-1 >= 0){
-        if(tab.board[x][esq-1].getIsFree()){
-            movi_possibilityX.add(x);
-            movi_possibilityY.add(esq-1);
-        }else{
-            if(tab.board[x][esq-1].getPiece().getCor() != tab.board[x][y].getPiece().getCor()){
-                movi_possibilityX.add(x);
-                movi_possibilityY.add(esq-1);
-                break;
-            }else{
-                break;
-            }
+        while (lock) {
+            ix++;
+            iy++;
+            if(tab.isinside(ix,iy)){
+                if(tab.board[ix][iy].getIsFree()){
+                    movi_possibilityX.add(ix);
+                    movi_possibilityY.add(iy);
+                }else{
+                    checkEat(tab, ix, iy, actual_Cor);
+                    lock = false;
+                }
+            }else lock = false;
         }
-        esq--;
-    }
-
-    while(dir+1 <= 7){
-        if(tab.board[x][dir+1].getIsFree()){
-            movi_possibilityX.add(x);
-            movi_possibilityY.add(dir+1);
-        }else{
-            if(tab.board[x][dir+1].getPiece().getCor() != tab.board[x][y].getPiece().getCor()){
-                movi_possibilityX.add(x);
-                movi_possibilityY.add(dir+1);
-                break;
-            }else{
-                break;
-            }
+        
+        ix = x;
+        iy = y;
+        lock = true;
+    
+        while (lock) {
+            ix--;
+            iy--;
+            if(tab.isinside(ix,iy)){
+                if(tab.board[ix][iy].getIsFree()){
+                    movi_possibilityX.add(ix);
+                    movi_possibilityY.add(iy);
+                }else{
+                    checkEat(tab, ix, iy, actual_Cor);
+                    lock = false;
+                }
+            }else lock = false;
         }
-
-        dir++;
-    }
-
-    while(baixo+1 <= 7){
-        if(tab.board[baixo+1][y].getIsFree()){
-            movi_possibilityX.add(baixo+1);
-            movi_possibilityY.add(y);
-        }else{
-            if(tab.board[baixo+1][y].getPiece().getCor() != tab.board[x][y].getPiece().getCor()){
-                movi_possibilityX.add(baixo+1);
-                movi_possibilityY.add(y);
-                break;
-            }else{
-                break;
-            }
+    
+        ix = x;
+        iy = y;
+        lock = true;
+    
+        while (lock) {
+            ix++;
+            iy--;
+            if(tab.isinside(ix,iy)){
+                if(tab.board[ix][iy].getIsFree()){
+                    movi_possibilityX.add(ix);
+                    movi_possibilityY.add(iy);
+                }else{
+                    checkEat(tab, ix, iy, actual_Cor);
+                    lock = false;
+                }
+            }else lock = false;
         }
-        baixo++;
-    }
-
-    while(cima-1 >= 0){
-        if(tab.board[cima-1][y].getIsFree()){
-            movi_possibilityX.add(cima-1);
-            movi_possibilityY.add(y);
-        }else{
-            if(tab.board[cima-1][y].getPiece().getCor() != tab.board[x][y].getPiece().getCor()){
-                movi_possibilityX.add(cima-1);
-                movi_possibilityY.add(y);
-                break;
-            }else{
-                break;
-            }
+    
+        ix = x;
+        iy = y;
+        lock = true;
+    
+        while (lock) {
+            ix--;
+            iy++;
+            if(tab.isinside(ix,iy)){
+                if(tab.board[ix][iy].getIsFree()){
+                    movi_possibilityX.add(ix);
+                    movi_possibilityY.add(iy);
+                }else{
+                    checkEat(tab, ix, iy, actual_Cor);
+                    lock = false;
+                }
+            }else lock = false;
         }
-        cima--;
-    }  
-
     tab.Print_Board_Possibility(movi_possibilityX, movi_possibilityY);
     }
 }
