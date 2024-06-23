@@ -88,6 +88,7 @@ public class Play {
 			 
 		}while(!tab.move_Board_Possibility(m1, m2, tab.board[t1][t2].getPiece().getmovi_possibilityX(), tab.board[t1][t2].getPiece().getmovi_possibilityY()));
 		
+		
 		tab.board[t1][t2].getPiece().move(tab,t1,t2, m1, m2);
 		
 		String aux = jogador.getName() + ": " +  tab.board[m1][m2].getPiece().getClass().getSimpleName() + " " +  String.valueOf(m1) + "|" + String.valueOf(m2) + "\n";

@@ -66,6 +66,7 @@ public class Pawn extends Piece { // classe dos peoes, herda os atributos e meto
 
     	tab.Print_Board_Possibility(movi_possibilityX, movi_possibilityY);
     	
+		
     }
     
    

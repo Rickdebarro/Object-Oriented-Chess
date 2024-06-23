@@ -1,10 +1,12 @@
 package generalElements;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.swing.*;
 import java.math.*;
 
 import Board.Board;
+import Pieces.Pawn;
 import generalElements.Commons.Cor;
 
 public class Piece {
@@ -48,6 +50,9 @@ public class Piece {
     public void SetPossible_Pos(Board tab,int x, int y){}
     
     public void move(Board tab,int t1, int t2, int x, int y) {
+
+        tab.checarEvento(t1, t2, x, y);
+        
     	tab.board[x][y].setPiece(tab.board[t1][t2].getPiece());
     	tab.board[t1][t2].setPiece(null);
     }
