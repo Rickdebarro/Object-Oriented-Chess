@@ -207,11 +207,4 @@ public class Horse extends Piece { // classe dos cavalos, herda os atributos e m
     	tab.Print_Board_Possibility(movi_possibilityX, movi_possibilityY);
     }
     
-    @Override
-    public void move(Board tab,int t1, int t2, int x, int y) {
-    	
-    	tab.board[x][y].setPiece(tab.board[t1][t2].getPiece());
-    	tab.board[t1][t2].setPiece(null);
-    }
-    
 }

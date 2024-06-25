@@ -35,9 +35,11 @@ public class Pawn extends Piece { // classe dos peoes, herda os atributos e meto
 		Commons.Cor actual_Cor = tab.board[x][y].getPiece().getCor();
 
 		if(actual_Cor == Cor.WHITE){
-			if(tab.board[x+1][y].getIsFree() && tab.isinside(x+1, y)){
-				movi_possibilityX.add(x+1);
-				movi_possibilityY.add(y);
+			if(tab.isinside(x+1, y)){
+				if(tab.board[x+1][y].getIsFree()){
+					movi_possibilityX.add(x+1);
+					movi_possibilityY.add(y);
+				}
 			}
 			if(firstMove){
 				if(tab.board[x+2][y].getIsFree()){
@@ -49,9 +51,11 @@ public class Pawn extends Piece { // classe dos peoes, herda os atributos e meto
 			checkEat(tab, x+1, y+1, actual_Cor);
 			checkEat(tab, x+1, y-1, actual_Cor);
 		}else if(actual_Cor == Cor.BLACK){
-			if(tab.board[x-1][y].getIsFree() && tab.isinside(x-1, y)){
-				movi_possibilityX.add(x-1);
-				movi_possibilityY.add(y);
+			if(tab.isinside(x-1, y)){
+				if(tab.board[x-1][y].getIsFree()){
+					movi_possibilityX.add(x-1);
+					movi_possibilityY.add(y);
+				}
 			}
 			if(firstMove){
 				if(tab.board[x-2][y].getIsFree()){

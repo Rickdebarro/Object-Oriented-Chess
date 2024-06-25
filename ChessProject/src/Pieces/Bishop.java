@@ -19,7 +19,7 @@ public class Bishop extends Piece {
         this.name_piece = name_piece;
     }
 
-    //Variável de controle da mocimentação
+    //Variável de controle da movimentação
     private boolean lock;
     
     @Override

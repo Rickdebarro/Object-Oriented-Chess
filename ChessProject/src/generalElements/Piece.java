@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.*;
+
+import java.io.IOException;
 import java.math.*;
 
 import Board.Board;
@@ -49,9 +51,20 @@ public class Piece {
      */
     public void SetPossible_Pos(Board tab,int x, int y){}
     
-    public void move(Board tab,int t1, int t2, int x, int y) {
+    public void move(Arquivo arq, Player jogador,Board tab,int t1, int t2, int x, int y) {
+        
+        if(tab.Fim_de_jogo(arq, jogador, t1, t2, x, y)){
+            String aux = jogador.getName() + ": " +  tab.board[t1][t2].getPiece().getClass().getSimpleName() + " " +  String.valueOf(t1) + "|" + String.valueOf(t2) + " -> " + String.valueOf(x) + "|" + String.valueOf(y) + "\n";
+		    try {
+                arq.gravaBuffered(aux);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            System.exit(0);
+        }
 
-        tab.checarEvento(t1, t2, x, y);
+        tab.Promove_Pawn( jogador,t1, t2, x, y);
         
     	tab.board[x][y].setPiece(tab.board[t1][t2].getPiece());
     	tab.board[t1][t2].setPiece(null);
@@ -69,13 +82,18 @@ public class Piece {
     
     //teste de nova função para checar a possibilidade de comer, como é um teste, ainda não foi implementada na classe mãe
 		public boolean checkEat(Board tab,int x,int y, Commons.Cor actual_c){
-			if(tab.board[x][y].getPiece() == null) return false;            
-			if(tab.board[x][y].getPiece().getCor() !=  actual_c){
-				movi_possibilityX.add(x);
-				movi_possibilityY.add(y);
-                return true;
-			}
-            return false;
+
+            if(tab.isinside(x, y)){
+                if(tab.board[x][y].getPiece() == null) return false;            
+                if(tab.board[x][y].getPiece().getCor() !=  actual_c){
+                    movi_possibilityX.add(x);
+                    movi_possibilityY.add(y);
+                    return true;
+                }
+                return false; 
+            }else{
+                return false;
+            }
 		}
 
 }

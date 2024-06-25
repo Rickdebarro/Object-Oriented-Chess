@@ -11,6 +11,7 @@ import Pieces.*;
 
 import generalElements.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class Board extends JFrame { // Classe do tabuleriro
 
@@ -138,7 +139,7 @@ public class Board extends JFrame { // Classe do tabuleriro
     public boolean move_Board_Possibility(int x, int y, ArrayList movi_possibilityX, ArrayList movi_possibilityY) {
 
         for (int i = 0; i < movi_possibilityX.size(); i++) {
-            if (x == (int) movi_possibilityX.get(i) && y == (int) movi_possibilityY.get(i)) {
+            if (x == (int) movi_possibilityX.get(i) && y == (int) movi_possibilityY.get(i)){
                 return true;
             }
         }
@@ -232,30 +233,65 @@ public class Board extends JFrame { // Classe do tabuleriro
         this.repaint();
     }
 
-    public void checarEvento(int t1, int t2, int x, int y) {
-
+    public boolean Fim_de_jogo(Arquivo arq, Player jogador, int t1, int t2, int x, int y){
         Scanner s = new Scanner(System.in);
 
         if (board[x][y].getPiece() instanceof King){
+
+            String aux = jogador.getName() + ": " +  board[t1][t2].getPiece().getClass().getSimpleName() + " " +  String.valueOf(t1) + "|" + String.valueOf(t2) + " -> " + String.valueOf(x) + "|" + String.valueOf(y) + "\n";
+		    try {
+                arq.gravaBuffered(aux);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
             switch (board[t1][t2].getPiece().getCor()) {
                 case WHITE:
-                    System.out.println("As brancas vencem, comendo o rei preto!");
+                    System.out.println("Parabéns " + jogador.getName() + ", as brancas vencem, comendo o rei preto!");
+                    System.out.println("Deseja visualizar as Jogadas? (1) - sim, (2) - não");
+                    int aux1 = s.nextInt();
+                    if(aux1 == 1){
+                        try {
+                            arq.leBuffered();
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }        
+                    }
                     break;
                 case BLACK:
-                    System.out.println("As pretas vencem, comendo o rei branco!");
+                    System.out.println("Parabéns " + jogador.getName() + ", as pretas vencem, comendo o rei branco!");
+                    System.out.println("Deseja visualizar as Jogadas? (1) - sim, (2) - não");
+                    int aux2 = s.nextInt();
+                    if(aux2 == 1){
+                        try {
+                            arq.leBuffered();
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }        
+                    }
                     break;
             
                 default:
                     break;
             }
-            System.exit(y);
+            return true;
+        }else{
+            return false;
         }
+    }
+
+    public void Promove_Pawn(Player jogador, int t1, int t2, int x, int y) {
+
+        Scanner s = new Scanner(System.in);
 
         if (board[t1][t2].getPiece() instanceof Pawn) {
+            
             if (x == 0 || x == 7) {
                 Cor at = board[t1][t2].getPiece().getCor();
-                System.out.println(
-                        "Parabens, voce pode promover seu peao: digite (d - Dama, c - cavalo, t - torre, b - bispo)");
+                System.out.println("Parabens " + jogador.getName() + "! Você pode promover seu peao: digite (d - Dama, c - cavalo, t - torre, b - bispo)");
                 switch (s.nextLine()) {
                     case "d":
                         board[t1][t2].setPiece(new Queen('R'));
@@ -276,10 +312,11 @@ public class Board extends JFrame { // Classe do tabuleriro
                         break;
                     }
                     board[t1][t2].getPiece().setCor(at);
-                }
+                }       
         }
     }
 
+    // Checa se a posição se encontra no tabuleiro
     static public boolean isinside(int x, int y) {
         if (x > 7 || x < 0)
             return false;
