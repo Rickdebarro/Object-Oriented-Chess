@@ -37,7 +37,7 @@ public class Board extends JFrame { // Classe do tabuleriro
 
     public Board(Player p1, Player p2) { // Construtor de Board que inicializa o tabuleiro
 
-        configuracoes();
+        //configuracoes();
 
         for (int i = 0; i < 8; i++) { // Loop que define as casas como Black or White
             for (int j = 0; j < 8; j++)
